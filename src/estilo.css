@@ -1,0 +1,19 @@
+html {
+    height: calc(100% - 20px);
+    margin: 10px;
+}
+
+body {
+    font-family: "Source Code Pro", Lucida Console, "Andale Mono", Courier, monospace;
+    text-transform: uppercase;
+    background: var(--bs-black);
+    height: 100%;
+    min-width: 270px;
+}
+
+#root {
+    border: solid 3px rgb(124, 198, 118);
+    height: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}

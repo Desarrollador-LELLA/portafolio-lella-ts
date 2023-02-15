@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Layout from './componentes/paginas/layout/Layout';
+import Tester from './componentes/paginas/tester/Tester';
 
-function App() {
+interface IAppProps { }
+
+const App: FC<IAppProps> = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path='/' element={<Layout />}>
+        <Route index element={<Tester />} />
+      </Route>
+    </Routes>
   );
-}
+};
 
 export default App;
