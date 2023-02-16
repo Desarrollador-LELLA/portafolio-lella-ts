@@ -8,7 +8,7 @@ body {
     text-transform: uppercase;
     background: var(--bs-black);
     height: 100%;
-    min-width: 270px;
+    min-width: 280px;
 }
 
 #root {
@@ -16,4 +16,8 @@ body {
     height: 100%;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+.active {
+    background: rgb(41, 66, 39);
 }

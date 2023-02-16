@@ -1,3 +1,24 @@
 .navbar_navheader {
     background-color: rgb(124, 198, 118);
 }
+
+.navtitle_navheader {
+    color: black;
+    text-decoration: none;
+}
+
+.nav_navheader {
+    border-bottom: solid 3px rgb(124, 198, 118);
+}
+
+.nav_navheader span {
+    color: rgb(124, 198, 118);
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 660px) {
+    .nav_navheader span {
+        display: none;
+    }
+}

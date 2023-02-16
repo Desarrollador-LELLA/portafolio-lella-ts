@@ -5,7 +5,7 @@ interface ITesterProps { }
 
 const Tester: FC<ITesterProps> = () => {
     return (
-        <h3>Tester Page</h3>
+        <h3>En Construccion</h3>
     );
 };
 
