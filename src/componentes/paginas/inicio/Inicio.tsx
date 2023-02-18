@@ -1,7 +1,8 @@
-import React, { FC } from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { FC } from 'react';
+import { Col, Row } from 'react-bootstrap';
 import s from './inicio.module.css'
+import { redes } from '../../../utilidades/datos';
+import CardRedes from '../../comp/card_redes/CardRedes';
 import icFacebook from '../../imagenes/ic_facebook.svg'
 import icGithub from '../../imagenes/ic_github.svg'
 import icLinkedin from '../../imagenes/ic_linkedin.svg'
@@ -11,9 +12,6 @@ import icYoutube from '../../imagenes/ic_youtube.svg'
 interface IInicioProps { }
 
 const Inicio: FC<IInicioProps> = () => {
-
-    const navegar = useNavigate();
-
     return (
         <>
             <Row xs='auto' className='text-center justify-content-center'>
@@ -28,51 +26,11 @@ const Inicio: FC<IInicioProps> = () => {
                 <h1 className={`${s.text_inicio}`}>Mis Redes</h1>
             </Row>
             <Row xs='auto' className='text-center justify-content-center g-3'>
-                <Col xs='auto'>
-                    <Card bsPrefix={s.cardredes_inicio} className={`h-100`} bg={`black`} onClick={() => window.open('https://github.com/Desarrollador-LELLA', '_blank')}>
-                        <Card.Body>
-                            {/* <Link to={'https://github.com/Desarrollador-LELLA'} target='_blank'>GIT</Link> */}
-                            <Card.Img src={icGithub} />
-                            <Card.Text>GIT</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col xs='auto'>
-                <Card bsPrefix={s.cardredes_inicio} className={`h-100`} bg={`black`} onClick={() => window.open('https://www.linkedin.com/in/luisestebanllancamilaguilera', '_blank')}>
-                        <Card.Body>
-                            {/* <Link to={'https://www.linkedin.com/in/luisestebanllancamilaguilera/'} target='_blank'>LINKEDIN</Link> */}
-                            <Card.Img src={icLinkedin} />
-                            <Card.Text>LINKEDIN</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col xs='auto'>
-                <Card bsPrefix={s.cardredes_inicio} className={`h-100`} bg={`black`} onClick={() => window.open('https://www.tiktok.com/@luisestebanllan32', '_blank')}>
-                        <Card.Body>
-                            {/* <Link to={'https://www.tiktok.com/@luisestebanllan32'} target='_blank'>TIKTOK</Link> */}
-                            <Card.Img src={icTiktok} />
-                            <Card.Text>TIKTOK</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col xs='auto'>
-                <Card bsPrefix={s.cardredes_inicio} className={`h-100`} bg={`black`} onClick={() => window.open('https://www.facebook.com/luisesteban.llancamilaguilera', '_blank')}>
-                        <Card.Body>
-                            {/* <Link to={'https://www.facebook.com/luisesteban.llancamilaguilera'} target='_blank'>FACEBOOK</Link> */}
-                            <Card.Img src={icFacebook} />
-                            <Card.Text>FACEBOOK</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col xs='auto'>
-                <Card bsPrefix={s.cardredes_inicio} className={`h-100`} bg={`black`} onClick={() => window.open('https://www.youtube.com/@mipymelella', '_blank')}>
-                        <Card.Body>
-                            {/* <Link to={'https://www.youtube.com/@mipymelella'} target='_blank'>YOUTUBE</Link> */}
-                            <Card.Img src={icYoutube} />
-                            <Card.Text>YOUTUBE</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
+                <CardRedes id={redes[0].id} nombre={redes[0].nombre} urlRed={redes[0].url} imagen={icGithub} />
+                <CardRedes id={redes[1].id} nombre={redes[1].nombre} urlRed={redes[1].url} imagen={icLinkedin} />
+                <CardRedes id={redes[2].id} nombre={redes[2].nombre} urlRed={redes[2].url} imagen={icTiktok} />
+                <CardRedes id={redes[3].id} nombre={redes[3].nombre} urlRed={redes[3].url} imagen={icFacebook} />
+                <CardRedes id={redes[4].id} nombre={redes[4].nombre} urlRed={redes[4].url} imagen={icYoutube} />
             </Row>
         </>
     );

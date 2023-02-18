@@ -10,7 +10,7 @@ const Layout: FC<ILayoutProps> = () => {
     return (
         <>
             <NavHeader />
-            <div className={`${s.contenedor_layout}`}>
+            <div className={`${s.contenedor_layout} py-2`}>
                 <Outlet />
             </div>
             <Consola />

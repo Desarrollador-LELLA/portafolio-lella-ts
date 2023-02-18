@@ -27,10 +27,10 @@ const NavHeader: FC<INavHeaderProps> = () => {
                     <NavLink className={`nav-link`} to='/sobremi'><img src={icSobre} alt='Sobre Mi'/><span>Sobre Mi</span></NavLink>
                 </Nav.Item>
                 <Nav.Item>
-                    <NavLink className={`nav-link`} to='/tester'><img src={icPortafolio} alt='Mi Portafolio'/><span>Portafolio</span></NavLink>
+                    <NavLink className={`nav-link`} to='/portafolio'><img src={icPortafolio} alt='Mi Portafolio'/><span>Portafolio</span></NavLink>
                 </Nav.Item>
                 <Nav.Item>
-                    <NavLink className={`nav-link`} to='/testers'><img src={icContacto} alt='Contacto'/><span>Contacto</span></NavLink>
+                    <NavLink className={`nav-link`} to='/contacto'><img src={icContacto} alt='Contacto'/><span>Contacto</span></NavLink>
                 </Nav.Item>
             </Nav>
         </>

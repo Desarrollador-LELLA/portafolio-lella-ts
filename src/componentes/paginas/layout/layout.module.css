@@ -1,3 +1,26 @@
 .contenedor_layout {
     height: calc(100% - 215px);
+    overflow-x: hidden;
+    scrollbar-color: rgb(124, 198, 118) rgb(0, 0, 0);
+    scrollbar-width: thin;
+}
+
+.contenedor_layout::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.contenedor_layout::-webkit-scrollbar:vertical {
+    width: 10px;
+}
+
+.contenedor_layout::-webkit-scrollbar-button:increment, .contenedor::-webkit-scrollbar-button {
+    display: none;
+}
+
+.contenedor_layout::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.contenedor_layout::-webkit-scrollbar-thumb {
+    background-color: rgb(124, 198, 118);
 }
