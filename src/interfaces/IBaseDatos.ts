@@ -4,3 +4,11 @@ export interface IRedes {
     urlRed: string;
     imagen: string;
 }
+
+export interface IHabilidades {
+    id: number;
+    nombre: string;
+    imagen: string;
+    url: string;
+    nivel: number;
+}
