@@ -21,3 +21,15 @@ body {
 .active {
     background: rgb(41, 66, 39);
 }
+
+.modal-content {
+    border: solid 3px rgb(124, 198, 118);
+    background: black;
+}
+
+.modal {
+    --bs-modal-border-radius: none;
+    --bs-modal-inner-border-radius: none;
+    --bs-modal-header-border-color: none;
+    --bs-modal-footer-border-color: none;
+}

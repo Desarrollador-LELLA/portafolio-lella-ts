@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import React, { FC, useState } from 'react';
+import { Button, Col, Row } from 'react-bootstrap';
 import CardRedes from '../../comp/card_redes/CardRedes';
 import s from './sobremi.module.css'
 import icTester from '../../imagenes/ic_sobre.svg'
@@ -26,10 +26,14 @@ import icAndroid from '../../imagenes/ic_android.svg'
 import icFlutter from '../../imagenes/ic_flutter.svg'
 import icDart from '../../imagenes/ic_dart.svg'
 import CardHabilidad from '../../comp/card_habilidad/CardHabilidad';
+import ModalVentana from '../../comp/modal_ventana/ModalVentana';
 
 interface ISobreMiProps { }
 
 const SobreMi: FC<ISobreMiProps> = () => {
+
+    
+
     return (
         <>
             <Row className='px-3'>
@@ -45,30 +49,30 @@ const SobreMi: FC<ISobreMiProps> = () => {
                 <h1 className={`${s.text_sobremi}`}>Mis Habilidades</h1>
             </Row>
             <Row xs='auto' className='text-center justify-content-center g-3'>
-                <CardHabilidad id={0} nombre={'Admob'} url={'#'} imagen={icAdmob} nivel={5} />
-                <CardHabilidad id={0} nombre={'Android'} url={'#'} imagen={icAndroid} nivel={5} />
-                <CardHabilidad id={0} nombre={'Bootstrap'} url={'#'} imagen={icBootstrap} nivel={4} />
-                <CardHabilidad id={0} nombre={'Css'} url={'#'} imagen={icCss} nivel={4} />
-                <CardHabilidad id={0} nombre={'Firebase'} url={'#'} imagen={icFirebase} nivel={4} />
-                <CardHabilidad id={0} nombre={'Github'} url={'#'} imagen={icGitHub} nivel={4} />
-                <CardHabilidad id={0} nombre={'Html'} url={'#'} imagen={icHtml} nivel={4} />
-                <CardHabilidad id={0} nombre={'Java'} url={'#'} imagen={icJava} nivel={4} />
-                <CardHabilidad id={0} nombre={'Javascript'} url={'#'} imagen={icJavaScript} nivel={4} />
-                <CardHabilidad id={0} nombre={'Kotlin'} url={'#'} imagen={icKotlin} nivel={1} />
-                <CardHabilidad id={0} nombre={'MongoDb'} url={'#'} imagen={icMongoDb} nivel={3} />
-                <CardHabilidad id={0} nombre={'My Sql'} url={'#'} imagen={icMySql} nivel={3} />
-                <CardHabilidad id={0} nombre={'Node'} url={'#'} imagen={icNodeJs} nivel={3} />
-                <CardHabilidad id={0} nombre={'PostgreSQL'} url={'#'} imagen={icPostgreSql} nivel={3} />
-                <CardHabilidad id={0} nombre={'React JS'} url={'#'} imagen={icReactJs} nivel={4} />
-                <CardHabilidad id={0} nombre={'React Native'} url={'#'} imagen={icReactJs} nivel={3} />
-                <CardHabilidad id={0} nombre={'Redux'} url={'#'} imagen={icRedux} nivel={4} />
-                <CardHabilidad id={0} nombre={'Sequelize'} url={'#'} imagen={icSequelize} nivel={4} />
-                <CardHabilidad id={0} nombre={'C Sharp'} url={'#'} imagen={icSharp} nivel={4} />
-                <CardHabilidad id={0} nombre={'Sql'} url={'#'} imagen={icSqlServer} nivel={5} />
-                <CardHabilidad id={0} nombre={'Typescript'} url={'#'} imagen={icTypescript} nivel={4} />
+                <CardHabilidad id={0} nombre={'Admob'} url={'#'} imagen={icAdmob} nivel={5}/>
+                <CardHabilidad id={0} nombre={'Android'} url={'#'} imagen={icAndroid} nivel={5}/>
+                <CardHabilidad id={0} nombre={'Bootstrap'} url={'#'} imagen={icBootstrap} nivel={4}/>
+                <CardHabilidad id={0} nombre={'Css'} url={'#'} imagen={icCss} nivel={4}/>
+                <CardHabilidad id={0} nombre={'Firebase'} url={'#'} imagen={icFirebase} nivel={4}/>
+                <CardHabilidad id={0} nombre={'Github'} url={'#'} imagen={icGitHub} nivel={4}/>
+                <CardHabilidad id={0} nombre={'Html'} url={'#'} imagen={icHtml} nivel={4}/>
+                <CardHabilidad id={0} nombre={'Java'} url={'#'} imagen={icJava} nivel={4}/>
+                <CardHabilidad id={0} nombre={'Javascript'} url={'#'} imagen={icJavaScript} nivel={4}/>
+                <CardHabilidad id={0} nombre={'Kotlin'} url={'#'} imagen={icKotlin} nivel={1}/>
+                <CardHabilidad id={0} nombre={'MongoDb'} url={'#'} imagen={icMongoDb} nivel={3}/>
+                <CardHabilidad id={0} nombre={'My Sql'} url={'#'} imagen={icMySql} nivel={3}/>
+                <CardHabilidad id={0} nombre={'Node'} url={'#'} imagen={icNodeJs} nivel={3}/>
+                <CardHabilidad id={0} nombre={'PostgreSQL'} url={'#'} imagen={icPostgreSql} nivel={3}/>
+                <CardHabilidad id={0} nombre={'React JS'} url={'#'} imagen={icReactJs} nivel={4}/>
+                <CardHabilidad id={0} nombre={'React Native'} url={'#'} imagen={icReactJs} nivel={3}/>
+                <CardHabilidad id={0} nombre={'Redux'} url={'#'} imagen={icRedux} nivel={4}/>
+                <CardHabilidad id={0} nombre={'Sequelize'} url={'#'} imagen={icSequelize} nivel={4}/>
+                <CardHabilidad id={0} nombre={'C Sharp'} url={'#'} imagen={icSharp} nivel={4}/>
+                <CardHabilidad id={0} nombre={'Sql'} url={'#'} imagen={icSqlServer} nivel={5}/>
+                <CardHabilidad id={0} nombre={'Typescript'} url={'#'} imagen={icTypescript} nivel={4}/>
 
-                <CardHabilidad id={0} nombre={'Flutter'} url={'#'} imagen={icFlutter} nivel={2} />
-                <CardHabilidad id={0} nombre={'Dart'} url={'#'} imagen={icDart} nivel={2} />
+                <CardHabilidad id={0} nombre={'Flutter'} url={'#'} imagen={icFlutter} nivel={2}/>
+                <CardHabilidad id={0} nombre={'Dart'} url={'#'} imagen={icDart} nivel={2}/>
             </Row>
         </>
     );

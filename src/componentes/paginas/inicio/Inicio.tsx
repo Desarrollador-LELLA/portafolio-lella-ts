@@ -1,5 +1,5 @@
-import { FC } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { FC, useState } from 'react';
+import { Button, Col, Row } from 'react-bootstrap';
 import s from './inicio.module.css'
 import { redes } from '../../../utilidades/datos';
 import CardRedes from '../../comp/card_redes/CardRedes';
@@ -12,6 +12,9 @@ import icYoutube from '../../imagenes/ic_youtube.svg'
 interface IInicioProps { }
 
 const Inicio: FC<IInicioProps> = () => {
+
+
+
     return (
         <>
             <Row xs='auto' className='text-center justify-content-center'>
