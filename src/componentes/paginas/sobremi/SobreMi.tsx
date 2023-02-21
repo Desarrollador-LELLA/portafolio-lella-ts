@@ -26,7 +26,7 @@ import icAndroid from '../../imagenes/ic_android.svg'
 import icFlutter from '../../imagenes/ic_flutter.svg'
 import icDart from '../../imagenes/ic_dart.svg'
 import CardHabilidad from '../../comp/card_habilidad/CardHabilidad';
-import ModalVentana from '../../comp/modal_ventana/ModalVentana';
+import { habilidades } from '../../../utilidades/datos';
 
 interface ISobreMiProps { }
 
@@ -49,30 +49,30 @@ const SobreMi: FC<ISobreMiProps> = () => {
                 <h1 className={`${s.text_sobremi}`}>Mis Habilidades</h1>
             </Row>
             <Row xs='auto' className='text-center justify-content-center g-3'>
-                <CardHabilidad id={0} nombre={'Admob'} url={'#'} imagen={icAdmob} nivel={5}/>
-                <CardHabilidad id={0} nombre={'Android'} url={'#'} imagen={icAndroid} nivel={5}/>
-                <CardHabilidad id={0} nombre={'Bootstrap'} url={'#'} imagen={icBootstrap} nivel={4}/>
-                <CardHabilidad id={0} nombre={'Css'} url={'#'} imagen={icCss} nivel={4}/>
-                <CardHabilidad id={0} nombre={'Firebase'} url={'#'} imagen={icFirebase} nivel={4}/>
-                <CardHabilidad id={0} nombre={'Github'} url={'#'} imagen={icGitHub} nivel={4}/>
-                <CardHabilidad id={0} nombre={'Html'} url={'#'} imagen={icHtml} nivel={4}/>
-                <CardHabilidad id={0} nombre={'Java'} url={'#'} imagen={icJava} nivel={4}/>
-                <CardHabilidad id={0} nombre={'Javascript'} url={'#'} imagen={icJavaScript} nivel={4}/>
-                <CardHabilidad id={0} nombre={'Kotlin'} url={'#'} imagen={icKotlin} nivel={1}/>
-                <CardHabilidad id={0} nombre={'MongoDb'} url={'#'} imagen={icMongoDb} nivel={3}/>
-                <CardHabilidad id={0} nombre={'My Sql'} url={'#'} imagen={icMySql} nivel={3}/>
-                <CardHabilidad id={0} nombre={'Node'} url={'#'} imagen={icNodeJs} nivel={3}/>
-                <CardHabilidad id={0} nombre={'PostgreSQL'} url={'#'} imagen={icPostgreSql} nivel={3}/>
-                <CardHabilidad id={0} nombre={'React JS'} url={'#'} imagen={icReactJs} nivel={4}/>
-                <CardHabilidad id={0} nombre={'React Native'} url={'#'} imagen={icReactJs} nivel={3}/>
-                <CardHabilidad id={0} nombre={'Redux'} url={'#'} imagen={icRedux} nivel={4}/>
-                <CardHabilidad id={0} nombre={'Sequelize'} url={'#'} imagen={icSequelize} nivel={4}/>
-                <CardHabilidad id={0} nombre={'C Sharp'} url={'#'} imagen={icSharp} nivel={4}/>
-                <CardHabilidad id={0} nombre={'Sql'} url={'#'} imagen={icSqlServer} nivel={5}/>
-                <CardHabilidad id={0} nombre={'Typescript'} url={'#'} imagen={icTypescript} nivel={4}/>
+                <CardHabilidad id={habilidades[0].id} nombre={habilidades[0].nombre} url={habilidades[0].url} imagen={icAdmob} nivel={habilidades[0].nivel} descripcion={habilidades[0].descripcion}/>
+                <CardHabilidad id={habilidades[1].id} nombre={habilidades[1].nombre} url={habilidades[1].url} imagen={icAndroid} nivel={habilidades[1].nivel} descripcion={habilidades[1].descripcion}/>
+                <CardHabilidad id={habilidades[2].id} nombre={habilidades[2].nombre} url={habilidades[2].url} imagen={icBootstrap} nivel={habilidades[2].nivel} descripcion={habilidades[2].descripcion}/>
+                <CardHabilidad id={habilidades[3].id} nombre={habilidades[3].nombre} url={habilidades[3].url} imagen={icCss} nivel={habilidades[3].nivel} descripcion={habilidades[3].descripcion}/>
+                <CardHabilidad id={habilidades[4].id} nombre={habilidades[4].nombre} url={habilidades[4].url} imagen={icFirebase} nivel={habilidades[4].nivel} descripcion={habilidades[4].descripcion}/>
+                <CardHabilidad id={habilidades[5].id} nombre={habilidades[5].nombre} url={habilidades[5].url} imagen={icGitHub} nivel={habilidades[5].nivel} descripcion={habilidades[5].descripcion}/>
+                <CardHabilidad id={habilidades[6].id} nombre={habilidades[6].nombre} url={habilidades[6].url} imagen={icHtml} nivel={habilidades[6].nivel} descripcion={habilidades[6].descripcion}/>
+                <CardHabilidad id={habilidades[7].id} nombre={habilidades[7].nombre} url={habilidades[7].url} imagen={icJava} nivel={habilidades[7].nivel} descripcion={habilidades[7].descripcion}/>
+                <CardHabilidad id={habilidades[8].id} nombre={habilidades[8].nombre} url={habilidades[8].url} imagen={icJavaScript} nivel={habilidades[8].nivel} descripcion={habilidades[8].descripcion}/>
+                <CardHabilidad id={habilidades[9].id} nombre={habilidades[9].nombre} url={habilidades[9].url} imagen={icKotlin} nivel={habilidades[9].nivel} descripcion={habilidades[9].descripcion}/>
+                <CardHabilidad id={habilidades[10].id} nombre={habilidades[10].nombre} url={habilidades[10].url} imagen={icMongoDb} nivel={habilidades[10].nivel} descripcion={habilidades[10].descripcion}/>
+                <CardHabilidad id={habilidades[11].id} nombre={habilidades[11].nombre} url={habilidades[11].url} imagen={icMySql} nivel={habilidades[11].nivel} descripcion={habilidades[11].descripcion}/>
+                <CardHabilidad id={habilidades[12].id} nombre={habilidades[12].nombre} url={habilidades[12].url} imagen={icNodeJs} nivel={habilidades[12].nivel} descripcion={habilidades[12].descripcion}/>
+                <CardHabilidad id={habilidades[13].id} nombre={habilidades[13].nombre} url={habilidades[13].url} imagen={icPostgreSql} nivel={habilidades[13].nivel} descripcion={habilidades[13].descripcion}/>
+                <CardHabilidad id={habilidades[14].id} nombre={habilidades[14].nombre} url={habilidades[14].url} imagen={icReactJs} nivel={habilidades[14].nivel} descripcion={habilidades[14].descripcion}/>
+                <CardHabilidad id={habilidades[15].id} nombre={habilidades[15].nombre} url={habilidades[15].url} imagen={icReactJs} nivel={habilidades[15].nivel} descripcion={habilidades[15].descripcion}/>
+                <CardHabilidad id={habilidades[16].id} nombre={habilidades[16].nombre} url={habilidades[16].url} imagen={icRedux} nivel={habilidades[16].nivel} descripcion={habilidades[16].descripcion}/>
+                <CardHabilidad id={habilidades[17].id} nombre={habilidades[17].nombre} url={habilidades[17].url} imagen={icSequelize} nivel={habilidades[17].nivel} descripcion={habilidades[17].descripcion}/>
+                <CardHabilidad id={habilidades[18].id} nombre={habilidades[18].nombre} url={habilidades[18].url} imagen={icSharp} nivel={habilidades[18].nivel} descripcion={habilidades[18].descripcion}/>
+                <CardHabilidad id={habilidades[19].id} nombre={habilidades[19].nombre} url={habilidades[19].url} imagen={icSqlServer} nivel={habilidades[19].nivel} descripcion={habilidades[19].descripcion}/>
+                <CardHabilidad id={habilidades[20].id} nombre={habilidades[20].nombre} url={habilidades[20].url} imagen={icTypescript} nivel={habilidades[20].nivel} descripcion={habilidades[20].descripcion}/>
 
-                <CardHabilidad id={0} nombre={'Flutter'} url={'#'} imagen={icFlutter} nivel={2}/>
-                <CardHabilidad id={0} nombre={'Dart'} url={'#'} imagen={icDart} nivel={2}/>
+                <CardHabilidad id={habilidades[21].id} nombre={habilidades[21].nombre} url={habilidades[21].url} imagen={icFlutter} nivel={habilidades[21].nivel} descripcion={habilidades[21].descripcion}/>
+                <CardHabilidad id={habilidades[22].id} nombre={habilidades[22].nombre} url={habilidades[22].url} imagen={icDart} nivel={habilidades[22].nivel} descripcion={habilidades[22].descripcion}/>
             </Row>
         </>
     );

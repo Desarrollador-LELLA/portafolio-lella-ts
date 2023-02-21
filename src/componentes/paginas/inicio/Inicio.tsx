@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
+import { Image, Col, Row } from 'react-bootstrap';
 import s from './inicio.module.css'
 import { redes } from '../../../utilidades/datos';
 import CardRedes from '../../comp/card_redes/CardRedes';
@@ -17,13 +17,19 @@ const Inicio: FC<IInicioProps> = () => {
 
     return (
         <>
-            <Row xs='auto' className='text-center justify-content-center'>
+            <Row className='text-center justify-content-center'>
                 <Col>
                     <h1 className={`${s.text_inicio}`}>Hola, Soy Luis</h1>
                     <h3 className={`${s.text_inicio}`}>Desarrollador Full Stack</h3>
                     <h5 className={`${s.text_inicio}`}>Front End - Back End</h5>
                     <h6 className={`${s.text_inicio}`}>App Android - Web</h6>
                 </Col>
+                <Col className={s.contri_inicio}>
+                    <h6 className={`${s.text_inicio}`}>GitHub Contribuciones Ultimas 20 Semanas</h6>
+                    <Image src='https://ssr-contributions-svg.vercel.app/_/desarrollador-lella?chart=calendar&format=svg&weeks=20&dark=true' alt='GitHub Contribuciones' />
+                </Col>
+            </Row>
+            <Row className='text-center justify-content-center'>
             </Row>
             <Row xs='auto' className='text-center justify-content-center'>
                 <h1 className={`${s.text_inicio}`}>Mis Redes</h1>

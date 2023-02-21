@@ -7,10 +7,6 @@
     background: rgb(124, 198, 118);
 }
 
-.modalbody_modalventana {
-    
-}
-
-.modalfooster_modalventana {
-    
+.modaldescripcion_modalventana {
+    text-align: justify;
 }

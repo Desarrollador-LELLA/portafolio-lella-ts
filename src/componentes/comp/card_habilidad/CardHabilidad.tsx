@@ -8,7 +8,7 @@ import s from './cardhabilidad.module.css'
 //'★☆'
 const inicial = ['☆', '☆', '☆', '☆', '☆']
 
-const CardHabilidad: FC<IHabilidades> = ({ id, imagen, nombre, url, nivel }) => {
+const CardHabilidad: FC<IHabilidades> = ({ id, imagen, nombre, url, nivel, descripcion }) => {
 
     const [estrellas, setEstrellas] = useState(inicial)
     const [show, setShow] = useState(false);
@@ -16,7 +16,7 @@ const CardHabilidad: FC<IHabilidades> = ({ id, imagen, nombre, url, nivel }) => 
 
     return (
         <>
-            <ModalVentana show={show} handleClose={abrirCerrarModal} hablidad={{ id, imagen, nombre, url, nivel }}/>
+            <ModalVentana show={show} handleClose={abrirCerrarModal} hablidad={{ id, imagen, nombre, url, nivel, descripcion }}/>
             <Col xs='auto'>
                 <Card bsPrefix={s.cardhabilidad_inicio} className={`h-100`} bg={`black`} onClick={abrirCerrarModal}>
                     <Card.Body>

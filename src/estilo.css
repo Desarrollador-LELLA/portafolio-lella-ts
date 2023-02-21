@@ -33,3 +33,11 @@ body {
     --bs-modal-header-border-color: none;
     --bs-modal-footer-border-color: none;
 }
+
+.btn-primary {
+    --bs-btn-color: #000000;
+    --bs-btn-bg: rgb(124, 198, 118);
+    --bs-btn-border-color: rgb(124, 198, 118);
+    --bs-btn-hover-bg: rgb(41, 66, 39);
+    --bs-btn-hover-border-color: rgb(41, 66, 39);
+}

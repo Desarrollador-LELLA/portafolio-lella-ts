@@ -11,4 +11,5 @@ export interface IHabilidades {
     imagen: string;
     url: string;
     nivel: number;
+    descripcion: string;
 }

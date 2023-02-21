@@ -37,3 +37,9 @@
     -ms-border-radius: var(--bs-card-border-radius);
     -o-border-radius: var(--bs-card-border-radius);
 }
+
+.contri_inicio img {
+    width: 100%;
+    max-width: 600px;
+    min-width: 260px;
+}

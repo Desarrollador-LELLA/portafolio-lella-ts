@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Image, Row, Col } from 'react-bootstrap';
 import { IModalsHabilidades } from '../../../interfaces/IModals';
 import s from './modalventana.module.css';
 //action={() => window.open('url', '_blank')}
 
 const ModalVentana: FC<IModalsHabilidades> = ({ show, handleClose, hablidad }) => {
 
-    const { id, imagen, nombre, url, nivel } = hablidad;
+    const { id, imagen, nombre, url, nivel, descripcion } = hablidad;
+    const estrellas = ['☆', '☆', '☆', '☆', '☆']
 
     return (
         <Modal className={`${s.modaldialog_modalventana}`} show={show} onHide={handleClose} backdrop="static" keyboard={false}>
@@ -14,13 +15,34 @@ const ModalVentana: FC<IModalsHabilidades> = ({ show, handleClose, hablidad }) =
                 <Modal.Title className='text-black'>{nombre}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                En Construccion
+                <Row className='justify-content-center'>
+                    <Col xs='auto'>
+                        <Image src={imagen} alt={nombre} width='170px' height='170px' />
+                    </Col>
+                    <Col className='text-center'>
+                        <p>Nivel</p>
+                        <h1>
+                            {
+                                estrellas.map((x, _idx) => {
+                                    if (nivel > _idx) {
+                                        return '★'
+                                    }
+                                    return x
+                                })
+                            }
+                        </h1>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <p className={`${s.modaldescripcion_modalventana}`}>{descripcion}</p>
+                    </Col>
+                </Row>
             </Modal.Body>
             <Modal.Footer>
-                {/* <Button variant="secondary" onClick={handleClose}>
-                    Close
-                </Button> */}
-                {/* <Button variant="primary">Understood</Button> */}
+                <Button onClick={() => window.open(url, '_blank')}>
+                    Mas Informacion
+                </Button>
             </Modal.Footer>
         </Modal>
     );
