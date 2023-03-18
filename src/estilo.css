@@ -1,43 +1,43 @@
 html {
-    height: calc(100% - 20px);
-    margin: 10px;
+  height: calc(100% - 20px);
+  margin: 10px;
 }
 
 body {
-    font-family: "Source Code Pro", Lucida Console, "Andale Mono", Courier, monospace;
-    text-transform: uppercase;
-    background: var(--bs-black);
-    height: 100%;
-    min-width: 280px;
+  font-family: 'Source Code Pro', Lucida Console, 'Andale Mono', Courier, monospace;
+  text-transform: uppercase;
+  background: var(--bs-black);
+  height: 100%;
+  min-width: 278px;
 }
 
 #root {
-    border: solid 3px rgb(124, 198, 118);
-    height: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
+  border: solid 3px rgb(124, 198, 118);
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .active {
-    background: rgb(41, 66, 39);
+  background: rgb(41, 66, 39);
 }
 
 .modal-content {
-    border: solid 3px rgb(124, 198, 118);
-    background: black;
+  border: solid 3px rgb(124, 198, 118);
+  background: black;
 }
 
 .modal {
-    --bs-modal-border-radius: none;
-    --bs-modal-inner-border-radius: none;
-    --bs-modal-header-border-color: none;
-    --bs-modal-footer-border-color: none;
+  --bs-modal-border-radius: none;
+  --bs-modal-inner-border-radius: none;
+  --bs-modal-header-border-color: none;
+  --bs-modal-footer-border-color: none;
 }
 
 .btn-primary {
-    --bs-btn-color: #000000;
-    --bs-btn-bg: rgb(124, 198, 118);
-    --bs-btn-border-color: rgb(124, 198, 118);
-    --bs-btn-hover-bg: rgb(41, 66, 39);
-    --bs-btn-hover-border-color: rgb(41, 66, 39);
+  --bs-btn-color: #000000;
+  --bs-btn-bg: rgb(124, 198, 118);
+  --bs-btn-border-color: rgb(124, 198, 118);
+  --bs-btn-hover-bg: rgb(41, 66, 39);
+  --bs-btn-hover-border-color: rgb(41, 66, 39);
 }

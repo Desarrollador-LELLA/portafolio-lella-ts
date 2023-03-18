@@ -1,20 +1,17 @@
 import { FC, useState } from 'react';
 import { Image, Col, Row } from 'react-bootstrap';
-import s from './inicio.module.css'
+import s from './inicio.module.css';
 import { redes } from '../../../utilidades/datos';
 import CardRedes from '../../comp/card_redes/CardRedes';
-import icFacebook from '../../imagenes/ic_facebook.svg'
-import icGithub from '../../imagenes/ic_github.svg'
-import icLinkedin from '../../imagenes/ic_linkedin.svg'
-import icTiktok from '../../imagenes/ic_tiktok.svg'
-import icYoutube from '../../imagenes/ic_youtube.svg'
+import icFacebook from '../../imagenes/ic_facebook.svg';
+import icGithub from '../../imagenes/ic_github.svg';
+import icLinkedin from '../../imagenes/ic_linkedin.svg';
+import icTiktok from '../../imagenes/ic_tiktok.svg';
+import icYoutube from '../../imagenes/ic_youtube.svg';
 
-interface IInicioProps { }
+interface IInicioProps {}
 
 const Inicio: FC<IInicioProps> = () => {
-
-
-
     return (
         <>
             <Row className='text-center justify-content-center'>
@@ -29,8 +26,7 @@ const Inicio: FC<IInicioProps> = () => {
                     <Image src='https://ssr-contributions-svg.vercel.app/_/desarrollador-lella?chart=calendar&format=svg&weeks=20&dark=true' alt='GitHub Contribuciones' />
                 </Col>
             </Row>
-            <Row className='text-center justify-content-center'>
-            </Row>
+            <Row className='text-center justify-content-center'></Row>
             <Row xs='auto' className='text-center justify-content-center'>
                 <h1 className={`${s.text_inicio}`}>Mis Redes</h1>
             </Row>
