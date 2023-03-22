@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
-import CardRedes from '../../comp/card_redes/CardRedes';
+import { Card, Col, Row } from 'react-bootstrap';
 import icConstru from '../../imagenes/ic_constru.svg';
 import s from './tester.module.css';
 
@@ -8,7 +7,7 @@ interface ITesterProps {}
 
 const Tester: FC<ITesterProps> = () => {
   return (
-    <Row xs='auto' className='text-center justify-content-center g-3'>
+    <Row sm='auto' className='text-center justify-content-center g-3'>
       <Col>
         <Card className={`${s.tester_tester} h-100`} bg={`black`}>
           <Card.Body>
