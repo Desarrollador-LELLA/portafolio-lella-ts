@@ -9,18 +9,24 @@ import icContacto from '../../imagenes/ic_contacto.svg';
 import icSobre from '../../imagenes/ic_sobre.svg';
 import icEntrar from '../../imagenes/ic_entrar.svg';
 import { registraEntraGoogleAction } from '../../../redux/actions/authAction';
+import { ThunkDispatch } from 'redux-thunk';
+import { RootState } from '../../../redux/store';
+import { AuthActions } from '../../../interfaces/IAuth';
+import { useDispatch } from 'react-redux';
 
 interface INavHeaderProps {}
 
 const NavHeader: FC<INavHeaderProps> = () => {
+    const dispatch = useDispatch<ThunkDispatch<RootState, null, AuthActions>>();
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const onClickEntrar = () => {
-        registraEntraGoogleAction(() => { console.log('entro') })
-    }
+        dispatch(registraEntraGoogleAction());
+    };
 
     return (
         <>
@@ -71,10 +77,6 @@ const NavHeader: FC<INavHeaderProps> = () => {
                         <img src={icEntrar} alt='Entrar' />
                         <span className={`${s.naventrar_navheader}`}>Entrar</span>
                     </Button>
-                    {/* <NavLink className={`nav-link`} to='/entrar'>
-                        <img src={icEntrar} alt='Entrar' />
-                        <span className={`${s.naventrar_navheader}`}>Entrar</span>
-                    </NavLink> */}
                 </Nav.Item>
             </Nav>
         </>

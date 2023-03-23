@@ -1,3 +1,3 @@
-export interface IUsuario {
+export type IUsuario = {
     nombre: string;
 }
