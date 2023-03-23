@@ -1,6 +1,6 @@
 import { allAuth, auth } from '../../firebaseInicial/firebase';
 import { AuthActions } from '../../interfaces/IAuth';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../store/index';
 import { AUTHTYPE } from '../../types/authType';
 import { Dispatch } from 'redux';
@@ -8,27 +8,32 @@ import { Dispatch } from 'redux';
 export const registraEntraGoogleAction = (): ThunkAction<void, RootState, null, AuthActions> => async (dispatch) => {
     try {
         const provider = new allAuth.GoogleAuthProvider();
-        const result = await allAuth.signInWithPopup(auth, provider)
-        const unos = allAuth.getAdditionalUserInfo(result)
-        if (_tokenResponse.isNewUser) {
-        const userData = {
-          id: _tokenResponse.localId,
-          nombre: _tokenResponse.firstName ? _tokenResponse.firstName : 'Sin Nombre',
-          apellido: _tokenResponse.lastName ? _tokenResponse.lastName : 'Sin Apellido',
-          correo: _tokenResponse.email,
-          imagen: _tokenResponse.photoUrl,
-          rol: 'Cliente',
-          fechaCreacion: allDb.serverTimestamp(),
-        };
-        await allDb.setDoc(allDb.doc(db, 'usuarios', _tokenResponse.localId), userData);
-        await allAuth.sendEmailVerification(user);
-        dispatch({
-            type: AUTHTYPE.NEED_VERIFICATION,
-        });
-         dispatch({
-          type: AUTH_SET_USER,
-          payload: { id: userData.id, nombre: userData.nombre, apellido: userData.apellido, imagen: userData.imagen, rol: 'Cliente' },
-        });
+        const result = await allAuth.signInWithPopup(auth, provider);
+        const adicional = allAuth.getAdditionalUserInfo(result);
+        if (adicional?.isNewUser) {
+            const token = await result.user.getIdToken();
+            await fetch('http://localhost:3001/auth/entrar', {
+                method: 'POST', // or 'PUT'
+                body: JSON.stringify({ registro: adicional?.profile }),
+                headers: {
+                    authorization: token,
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log('SOY EL PUTO FETCH', data);
+                })
+                .catch(console.log);
+            // await allDb.setDoc(allDb.doc(db, 'usuarios', _tokenResponse.localId), userData);
+            await allAuth.sendEmailVerification(result.user);
+            // dispatch({
+            //     type: AUTHTYPE.NEED_VERIFICATION,
+            // });
+            // dispatch({
+            //     type: AUTH_SET_USER,
+            //     payload: { id: userData.id, nombre: userData.nombre, apellido: userData.apellido, imagen: userData.imagen, rol: 'Cliente' },
+            // });
         }
     } catch (err) {
         //onError();
@@ -98,4 +103,20 @@ const uno = {
         kind: 'identitytoolkit#VerifyAssertionResponse',
     },
     operationType: 'signIn',
+};
+
+const dos = {
+    isNewUser: false,
+    providerId: 'google.com',
+    profile: {
+        name: 'Mi Pyme LELLA',
+        granted_scopes: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid',
+        id: '111638002074713347166',
+        verified_email: true,
+        given_name: 'Mi Pyme',
+        locale: 'es',
+        family_name: 'LELLA',
+        email: 'lella.soporte@gmail.com',
+        picture: 'https://lh3.googleusercontent.com/a/AGNmyxbh90rmoij0zIyDVtf1PQrT_27_S_I6_jMVOE6t=s96-c',
+    },
 };
