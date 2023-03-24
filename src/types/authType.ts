@@ -1,4 +1,4 @@
-export enum AUTHTYPE {
+export enum AUTH_TYPE {
     SET_USER = 'AUTH_SET_USER',
     SIGN_OUT = 'AUTH_SIGN_OUT',
     SET_LOADING = 'AUTH_SET_LOADING',

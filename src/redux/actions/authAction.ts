@@ -2,8 +2,9 @@ import { allAuth, auth } from '../../firebaseInicial/firebase';
 import { AuthActions } from '../../interfaces/IAuth';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../store/index';
-import { AUTHTYPE } from '../../types/authType';
+import { AUTH_TYPE } from '../../types/authType';
 import { Dispatch } from 'redux';
+import { consultaPostBody } from '../../utilidades/metodosFirebase';
 
 export const registraEntraGoogleAction = (): ThunkAction<void, RootState, null, AuthActions> => async (dispatch) => {
     try {
@@ -12,20 +13,7 @@ export const registraEntraGoogleAction = (): ThunkAction<void, RootState, null, 
         const adicional = allAuth.getAdditionalUserInfo(result);
         if (adicional?.isNewUser) {
             const token = await result.user.getIdToken();
-            await fetch('http://localhost:3001/auth/entrar', {
-                method: 'POST', // or 'PUT'
-                body: JSON.stringify({ registro: adicional?.profile }),
-                headers: {
-                    authorization: token,
-                    'Content-Type': 'application/json',
-                },
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log('SOY EL PUTO FETCH', data);
-                })
-                .catch(console.log);
-            // await allDb.setDoc(allDb.doc(db, 'usuarios', _tokenResponse.localId), userData);
+            const retorno = await consultaPostBody('/auth/entrar', adicional.profile, token)
             await allAuth.sendEmailVerification(result.user);
             // dispatch({
             //     type: AUTHTYPE.NEED_VERIFICATION,
