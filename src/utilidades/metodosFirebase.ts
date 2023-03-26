@@ -30,10 +30,8 @@ export const consultaPostBody = async (url: string, bodydatos: {} | null, token:
         return retorno;
 };
 
-export const consultaGetBody = async (url: string, bodydatos: {} | null, token: string) => {
+export const consultaGet = async (url: string, token: string) => {
     const retorno = await fetch(`${process.env.REACT_APP_HOSTAPI}${url}`, {
-        method: 'POST', // or 'PUT'
-        body: JSON.stringify(bodydatos),
         headers: { authorization: token, 'Content-Type': 'application/json' },
     })
         .then((res) => res.json())
