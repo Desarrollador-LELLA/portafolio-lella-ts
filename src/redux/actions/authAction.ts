@@ -3,7 +3,6 @@ import { AuthActions } from '../../interfaces/IAuth';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../store/index';
 import { AUTH_TYPE } from '../../types/authType';
-import { Dispatch } from 'redux';
 import { consultaPostBody } from '../../utilidades/metodosFirebase';
 
 export const registraEntraGoogleAction = (): ThunkAction<void, RootState, null, AuthActions> => async (dispatch) => {
@@ -14,14 +13,15 @@ export const registraEntraGoogleAction = (): ThunkAction<void, RootState, null, 
         if (adicional?.isNewUser) {
             const token = await result.user.getIdToken();
             const retorno = await consultaPostBody('/auth/entrar', adicional.profile, token);
+            console.log(retorno)
             await allAuth.sendEmailVerification(result.user);
-            // dispatch({
-            //     type: AUTHTYPE.NEED_VERIFICATION,
-            // });
-            // dispatch({
-            //     type: AUTH_SET_USER,
-            //     payload: { id: userData.id, nombre: userData.nombre, apellido: userData.apellido, imagen: userData.imagen, rol: 'Cliente' },
-            // });
+            dispatch({
+                type: AUTH_TYPE.NEED_VERIFICATION,
+            });
+            dispatch({
+                type: AUTH_TYPE.SET_USER,
+                payload: { nombre: 'userData.nombre', apellido: 'userData.apellido', imagen: 'userData.imagen' },
+            });
         } else {
             if (adicional) {
                 const token = await result.user.getIdToken();
