@@ -6,6 +6,10 @@ import { AUTH_TYPE } from '../../types/authType';
 import { consultaGet, consultaPostBody } from '../../utilidades/metodosFirebase';
 
 export const registraEntraGoogleAction = (): ThunkAction<void, RootState, null, AuthActions> => async (dispatch) => {
+    dispatch({
+        type: AUTH_TYPE.SET_LOADING,
+        payload: true,
+    });
     try {
         const provider = new allAuth.GoogleAuthProvider();
         const result = await allAuth.signInWithPopup(auth, provider);
@@ -13,33 +17,35 @@ export const registraEntraGoogleAction = (): ThunkAction<void, RootState, null, 
         if (adicional?.isNewUser) {
             const token = await result.user.getIdToken();
             const retorno = await consultaPostBody('/auth/entrar', adicional.profile, token);
-            console.log('ENTRAR', retorno)
             await allAuth.sendEmailVerification(result.user);
             dispatch({
                 type: AUTH_TYPE.NEED_VERIFICATION,
             });
             dispatch({
                 type: AUTH_TYPE.SET_USER,
-                payload: { nombre: 'userData.nombre', apellido: 'userData.apellido', imagen: 'userData.imagen' },
+                payload: { ...retorno.resultado },
             });
         } else {
             if (adicional) {
                 const token = await result.user.getIdToken();
                 const retorno = await consultaGet('/auth/entrar', token);
-                console.log('LOGIN', retorno)
                 dispatch({
                     type: AUTH_TYPE.SET_USER,
-                    payload: { nombre: 'retorno.nombre', apellido: 'retorno.apellido', imagen: 'retorno.imagen' },
+                    payload: { ...retorno.resultado },
                 });
             }
         }
     } catch (err) {
-        //onError();
         console.log(err);
-        // dispatch({
-        //   type: AUTH_SET_ERROR,
-        //   payload: erroresList(err),
-        // });
+        dispatch({
+            type: AUTH_TYPE.SET_ERROR,
+            payload: 'erroresList(err)',
+        });
+    } finally {
+        dispatch({
+            type: AUTH_TYPE.SET_LOADING,
+            payload: false,
+        });
     }
 };
 

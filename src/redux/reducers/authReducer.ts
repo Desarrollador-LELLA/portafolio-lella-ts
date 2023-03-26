@@ -4,7 +4,7 @@ import { AUTH_TYPE } from '../../types/authType';
 const initialState: IAuths = {
     usuarioAuth: undefined,
     authenticatedAuth: false,
-    loadingAuth: true,
+    loadingAuth: false,
     errorAuth: '',
     needVerificationAuth: false,
     successAuth: '',

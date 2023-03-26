@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { Button, Container, Nav, Navbar, NavDropdown, Offcanvas, Form, Alert, NavItem } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar, NavDropdown, Offcanvas, Form, Alert, NavItem, Image, Spinner } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import s from './navheader.module.css';
 import icMenu from '../../imagenes/ic_menu.svg';
@@ -13,10 +13,12 @@ import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from '../../../redux/store';
 import { AuthActions } from '../../../interfaces/IAuth';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 interface INavHeaderProps {}
 
 const NavHeader: FC<INavHeaderProps> = () => {
+    const { loadingAuth, authenticatedAuth, usuarioAuth } = useSelector((state: RootState) => state.auth);
     const dispatch = useDispatch<ThunkDispatch<RootState, null, AuthActions>>();
 
     const [show, setShow] = useState(false);
@@ -73,9 +75,15 @@ const NavHeader: FC<INavHeaderProps> = () => {
                     </Offcanvas.Body>
                 </Offcanvas>
                 <Nav.Item>
-                    <Button variant='none' onClick={onClickEntrar}>
-                        <img src={icEntrar} alt='Entrar' />
-                        <span className={`${s.naventrar_navheader}`}>Entrar</span>
+                    <Button variant='none' onClick={onClickEntrar} disabled={loadingAuth}>
+                        {loadingAuth ? (
+                            <Spinner animation='grow' variant="success" />
+                        ) : (
+                            <>
+                                <Image src={authenticatedAuth ? (usuarioAuth?.imagen ? usuarioAuth?.imagen : icContacto) : icEntrar} width='36px' height='36px' roundedCircle />
+                                <span className={`${s.naventrar_navheader}`}>Entrar</span>
+                            </>
+                        )}
                     </Button>
                 </Nav.Item>
             </Nav>
