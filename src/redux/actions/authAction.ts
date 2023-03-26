@@ -49,6 +49,30 @@ export const registraEntraGoogleAction = (): ThunkAction<void, RootState, null, 
     }
 };
 
+export const salirAction = (): ThunkAction<void, RootState, null, AuthActions> => async (dispatch) => {
+    try {
+        dispatch({
+            type: AUTH_TYPE.SET_LOADING,
+            payload: true,
+        });
+        await auth.signOut();
+        dispatch({
+            type: AUTH_TYPE.SIGN_OUT,
+        });
+    } catch (err) {
+        console.log(err);
+        dispatch({
+            type: AUTH_TYPE.SET_ERROR,
+            payload: 'erroresList(err)',
+        });
+    } finally {
+        dispatch({
+            type: AUTH_TYPE.SET_LOADING,
+            payload: false,
+        });
+    }
+};
+
 const uno = {
     user: {
         uid: 'NxkenPPVt8NYbKN4jSE7HVvO2zG2',

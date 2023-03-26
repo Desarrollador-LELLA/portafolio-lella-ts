@@ -8,7 +8,7 @@ import icPortafolio from '../../imagenes/ic_portafolio.svg';
 import icContacto from '../../imagenes/ic_contacto.svg';
 import icSobre from '../../imagenes/ic_sobre.svg';
 import icEntrar from '../../imagenes/ic_entrar.svg';
-import { registraEntraGoogleAction } from '../../../redux/actions/authAction';
+import { registraEntraGoogleAction, salirAction } from '../../../redux/actions/authAction';
 import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from '../../../redux/store';
 import { AuthActions } from '../../../interfaces/IAuth';
@@ -23,11 +23,15 @@ const NavHeader: FC<INavHeaderProps> = () => {
 
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(!show);
 
-    const onClickEntrar = () => {
-        dispatch(registraEntraGoogleAction());
+    const onClickEntrar = (e: React.BaseSyntheticEvent) => {
+        const elemento = e.currentTarget.getElementsByTagName('span');
+        if (elemento[0].innerText === 'Salir') {
+            dispatch(salirAction());
+        } else {
+            dispatch(registraEntraGoogleAction());
+        }
     };
 
     return (
@@ -40,7 +44,7 @@ const NavHeader: FC<INavHeaderProps> = () => {
                 </Container>
             </Navbar>
             <Nav className={`${s.nav_navheader}`} onSelect={(selectedKey) => alert(`selected ${selectedKey} Esto se esta Construyendo`)}>
-                <Nav.Item className='d-sm-none' onClick={handleShow}>
+                <Nav.Item className='d-sm-none' onClick={handleClose}>
                     <img className='nav-link' src={icMenu} alt='Menu' />
                 </Nav.Item>
                 <Nav.Item>
@@ -54,34 +58,34 @@ const NavHeader: FC<INavHeaderProps> = () => {
                         <span className={`${s.navsobre_navheader}`}>Sobre Mi</span>
                     </NavLink>
                 </Nav.Item>
-
                 <Offcanvas show={show} onHide={handleClose} responsive='sm'>
                     <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>Responsive offcanvas</Offcanvas.Title>
+                        <Offcanvas.Title>Menu</Offcanvas.Title>
                     </Offcanvas.Header>
-                    <Offcanvas.Body>
+                    <Offcanvas.Body className=''>
                         <Nav.Item>
-                            <NavLink className={`nav-link`} to='/portafolio'>
+                            <NavLink className={`nav-link`} to='/portafolio' onClick={() => setShow(false)}>
                                 <img src={icPortafolio} alt='Mi Portafolio' />
                                 <span className={`${s.navportafolio_navheader}`}>Portafolio</span>
                             </NavLink>
                         </Nav.Item>
                         <Nav.Item>
-                            <NavLink className={`nav-link`} to='/contacto'>
+                            <NavLink className={`nav-link`} to='/contacto' onClick={() => setShow(false)}>
                                 <img src={icContacto} alt='Contacto' />
                                 <span>Contacto</span>
                             </NavLink>
                         </Nav.Item>
                     </Offcanvas.Body>
                 </Offcanvas>
-                <Nav.Item>
-                    <Button variant='none' onClick={onClickEntrar} disabled={loadingAuth}>
+                <Nav.Item className='m-auto'></Nav.Item>
+                <Nav.Item className='justify-content-end'>
+                    <Button variant='none' onClick={onClickEntrar} disabled={loadingAuth} id='idedelelemento'>
                         {loadingAuth ? (
-                            <Spinner animation='grow' variant="success" />
+                            <Spinner animation='grow' variant='success' />
                         ) : (
                             <>
                                 <Image src={authenticatedAuth ? (usuarioAuth?.imagen ? usuarioAuth?.imagen : icContacto) : icEntrar} width='36px' height='36px' roundedCircle />
-                                <span className={`${s.naventrar_navheader}`}>Entrar</span>
+                                <span className={`${s.naventrar_navheader}`}>{authenticatedAuth ? 'Salir' : 'Entrar'}</span>
                             </>
                         )}
                     </Button>

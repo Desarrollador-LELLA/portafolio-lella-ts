@@ -41,3 +41,18 @@ body {
   --bs-btn-hover-bg: rgb(41, 66, 39);
   --bs-btn-hover-border-color: rgb(41, 66, 39);
 }
+
+.offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl {
+  --bs-offcanvas-color: rgb(124, 198, 118);
+  --bs-offcanvas-bg: #000000;
+}
+
+.nav-link {
+  --bs-nav-link-padding-x: 1rem;
+  --bs-nav-link-padding-y: 0.5rem;
+}
+
+.offcanvas-header {
+  background: var(--bs-offcanvas-color);
+  color: var(--bs-offcanvas-bg);
+}
