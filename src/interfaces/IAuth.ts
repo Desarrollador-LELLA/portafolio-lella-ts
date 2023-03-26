@@ -1,4 +1,4 @@
-import { AUTH_TYPE, AUTH_NEED_VERIFICATION, AUTH_SET_ERROR, AUTH_SET_LOADING, AUTH_SET_SUCCESS, AUTH_SET_USER, AUTH_SIGN_OUT } from '../types/authType';
+import { AUTH_TYPE } from '../types/authType';
 import { IUsuario } from './IUsuario';
 
 export interface IAuths {
@@ -11,30 +11,30 @@ export interface IAuths {
 }
 
 interface SetUsuarioActionAuth {
-    type: typeof AUTH_SET_USER;
+    type: AUTH_TYPE.SET_USER;
     payload: IUsuario;
 }
 
 interface LoadingActionAuth {
-    type: typeof AUTH_SET_LOADING;
+    type: AUTH_TYPE.SET_LOADING;
     payload: boolean;
 }
 
 interface SingOutActionAuth {
-    type: typeof AUTH_SIGN_OUT;
+    type: AUTH_TYPE.SIGN_OUT;
 }
 
 interface ErrorActionAuth {
-    type: typeof AUTH_SET_ERROR;
+    type: AUTH_TYPE.SET_ERROR;
     payload: string;
 }
 
 interface NeedVerificationActionAuth {
-    type: typeof AUTH_NEED_VERIFICATION;
+    type: AUTH_TYPE.NEED_VERIFICATION;
 }
 
 interface SuccessActionAuth {
-    type: typeof AUTH_SET_SUCCESS;
+    type: AUTH_TYPE.SET_SUCCESS;
     payload: string;
 }
 

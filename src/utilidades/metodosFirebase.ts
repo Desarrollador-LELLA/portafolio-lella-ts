@@ -30,4 +30,16 @@ export const consultaPostBody = async (url: string, bodydatos: {} | null, token:
         return retorno;
 };
 
+export const consultaGetBody = async (url: string, bodydatos: {} | null, token: string) => {
+    const retorno = await fetch(`${process.env.REACT_APP_HOSTAPI}${url}`, {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(bodydatos),
+        headers: { authorization: token, 'Content-Type': 'application/json' },
+    })
+        .then((res) => res.json())
+        .then((data) => data)
+        .catch(err => err);
+        return retorno;
+};
+
 export const tester = () => {};

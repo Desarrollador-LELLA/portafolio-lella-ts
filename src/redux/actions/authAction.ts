@@ -13,7 +13,7 @@ export const registraEntraGoogleAction = (): ThunkAction<void, RootState, null, 
         const adicional = allAuth.getAdditionalUserInfo(result);
         if (adicional?.isNewUser) {
             const token = await result.user.getIdToken();
-            const retorno = await consultaPostBody('/auth/entrar', adicional.profile, token)
+            const retorno = await consultaPostBody('/auth/entrar', adicional.profile, token);
             await allAuth.sendEmailVerification(result.user);
             // dispatch({
             //     type: AUTHTYPE.NEED_VERIFICATION,
@@ -22,6 +22,12 @@ export const registraEntraGoogleAction = (): ThunkAction<void, RootState, null, 
             //     type: AUTH_SET_USER,
             //     payload: { id: userData.id, nombre: userData.nombre, apellido: userData.apellido, imagen: userData.imagen, rol: 'Cliente' },
             // });
+        } else {
+            if (adicional) {
+                const token = await result.user.getIdToken();
+                const retorno = await consultaPostBody('/auth/entrar', adicional.profile, token);
+                await allAuth.sendEmailVerification(result.user);
+            }
         }
     } catch (err) {
         //onError();
