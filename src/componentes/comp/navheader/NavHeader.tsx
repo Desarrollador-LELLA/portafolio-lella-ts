@@ -84,7 +84,7 @@ const NavHeader: FC<INavHeaderProps> = () => {
                             <Spinner animation='grow' variant='success' />
                         ) : (
                             <>
-                                <Image src={authenticatedAuth ? (usuarioAuth?.imagen ? usuarioAuth?.imagen : icContacto) : icEntrar} width='36px' height='36px' roundedCircle />
+                                <Image src={authenticatedAuth ? (usuarioAuth.imagen ? usuarioAuth.imagen : icContacto) : icEntrar} width='36px' height='36px' roundedCircle />
                                 <span className={`${s.naventrar_navheader}`}>{authenticatedAuth ? 'Salir' : 'Entrar'}</span>
                             </>
                         )}

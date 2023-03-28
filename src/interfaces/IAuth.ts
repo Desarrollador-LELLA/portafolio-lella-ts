@@ -2,7 +2,7 @@ import { AUTH_TYPE } from '../types/authType';
 import { IUsuario } from './IUsuario';
 
 export interface IAuths {
-    usuarioAuth: IUsuario | undefined;
+    usuarioAuth: IUsuario;
     authenticatedAuth: boolean;
     loadingAuth: boolean;
     errorAuth: string;

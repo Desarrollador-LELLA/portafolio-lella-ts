@@ -19,7 +19,9 @@
 // };
 //
 
-export const consultaPostBody = async (url: string, bodydatos: {} | null, token: string) => {
+import { IRetornoBack } from "../interfaces/IRetornos";
+
+export const consultaPostBody = async (url: string, bodydatos: {} | null, token: string): Promise<IRetornoBack> => {
     const retorno = await fetch(`${process.env.REACT_APP_HOSTAPI}${url}`, {
         method: 'POST', // or 'PUT'
         body: JSON.stringify(bodydatos),
@@ -31,7 +33,7 @@ export const consultaPostBody = async (url: string, bodydatos: {} | null, token:
         return retorno;
 };
 
-export const consultaGet = async (url: string, token: string) => {
+export const consultaGet = async (url: string, token: string): Promise<IRetornoBack> => {
     const retorno = await fetch(`${process.env.REACT_APP_HOSTAPI}${url}`, {
         headers: { authorization: token, 'Content-Type': 'application/json' },
     })

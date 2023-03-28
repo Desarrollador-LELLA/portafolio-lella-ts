@@ -2,7 +2,7 @@ import { AuthActions, IAuths } from '../../interfaces/IAuth';
 import { AUTH_TYPE } from '../../types/authType';
 
 const initialState: IAuths = {
-    usuarioAuth: undefined,
+    usuarioAuth: { nombre: '', apellido: '', imagen: '', rol: '' },
     authenticatedAuth: false,
     loadingAuth: false,
     errorAuth: '',
@@ -26,7 +26,7 @@ const authReducer = (state = initialState, action: AuthActions) => {
         case AUTH_TYPE.SIGN_OUT:
             return {
                 ...state,
-                usuarioAuth: undefined,
+                usuarioAuth: { nombre: '', apellido: '', imagen: '', rol: '' },
                 authenticatedAuth: false,
                 loadingAuth: false,
             };
