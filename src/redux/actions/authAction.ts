@@ -73,6 +73,34 @@ export const salirAction = (): ThunkAction<void, RootState, null, AuthActions> =
     }
 };
 
+export const getUser = (): ThunkAction<void, RootState, null, AuthActions> => async (dispatch) => {
+    try{
+        dispatch({
+            type: AUTH_TYPE.SET_LOADING,
+            payload: true,
+        });
+        auth.onAuthStateChanged((user) => {
+            console.log(user)
+            if (user) {
+                // dispatch(getUserById(user.uid));
+                // if (!user.emailVerified) {
+                //     dispatch(needVerificationAction());
+                // }
+            } else {
+                // dispatch(loadingAction(false));
+            }
+        });
+    } catch (err){
+        console.log(err)
+    } finally {
+        dispatch({
+            type: AUTH_TYPE.SET_LOADING,
+            payload: false,
+        });
+    }
+    
+}
+
 const uno = {
     user: {
         uid: 'NxkenPPVt8NYbKN4jSE7HVvO2zG2',
