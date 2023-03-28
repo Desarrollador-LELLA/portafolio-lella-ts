@@ -17,6 +17,7 @@
 //         errores(erroresList(err));
 //     }
 // };
+//
 
 export const consultaPostBody = async (url: string, bodydatos: {} | null, token: string) => {
     const retorno = await fetch(`${process.env.REACT_APP_HOSTAPI}${url}`, {
