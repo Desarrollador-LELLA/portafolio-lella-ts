@@ -28,7 +28,7 @@ const App: FC<IAppProps> = () => {
 
   return (
     <>
-        {console.log((authenticatedAuth && usuarioAuth.rol === 'Admin'))}
+    {console.log((authenticatedAuth && usuarioAuth.rol === 'Admin'))}
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<Inicio />} />
