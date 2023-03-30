@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { Button, Container, Nav, Navbar, NavDropdown, Offcanvas, Form, Alert, NavItem, Image, Spinner } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar, Offcanvas, Image, Spinner } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import s from './navheader.module.css';
 import icMenu from '../../imagenes/ic_menu.svg';
@@ -12,8 +12,7 @@ import { registraEntraGoogleAction, salirAction } from '../../../redux/actions/a
 import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from '../../../redux/store';
 import { AuthActions } from '../../../interfaces/IAuth';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 interface INavHeaderProps {}
 
@@ -22,15 +21,16 @@ const NavHeader: FC<INavHeaderProps> = () => {
     const dispatch = useDispatch<ThunkDispatch<RootState, null, AuthActions>>();
 
     const [show, setShow] = useState(false);
+    const [loading, setLoading] = useState(false)
 
     const handleClose = () => setShow(!show);
 
     const onClickEntrar = (e: React.BaseSyntheticEvent) => {
         const elemento = e.currentTarget.getElementsByTagName('span');
         if (elemento[0].innerText === 'Salir') {
-            dispatch(salirAction());
+            dispatch(salirAction(() => setLoading(true), () => setLoading(false)));
         } else {
-            dispatch(registraEntraGoogleAction());
+            dispatch(registraEntraGoogleAction(() => setLoading(true), () => setLoading(false)));
         }
     };
 
@@ -84,7 +84,7 @@ const NavHeader: FC<INavHeaderProps> = () => {
                             <Spinner animation='grow' variant='success' />
                         ) : (
                             <>
-                                <Image src={authenticatedAuth ? (usuarioAuth.imagen ? usuarioAuth.imagen : icContacto) : icEntrar} width='36px' height='36px' roundedCircle />
+                                <Image src={authenticatedAuth ? (usuarioAuth?.imagen ? usuarioAuth.imagen : icContacto) : icEntrar} width='36px' height='36px' roundedCircle />
                                 <span className={`${s.naventrar_navheader}`}>{authenticatedAuth ? 'Salir' : 'Entrar'}</span>
                             </>
                         )}
