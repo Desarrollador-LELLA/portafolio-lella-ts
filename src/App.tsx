@@ -25,6 +25,7 @@ const App: FC<IAppProps> = () => {
 
     return (
         <>
+            {/* {console.log(authenticatedAuth, loadingAuth, usuarioAuth)} */}
             <Routes>
                 <Route path='/' element={<Layout />}>
                     <Route index element={<Inicio />} />

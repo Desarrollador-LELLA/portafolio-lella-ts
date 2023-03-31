@@ -22,10 +22,11 @@
 import { IRetornoBack } from "../interfaces/IRetornos";
 
 export const consultaPostBody = async (url: string, bodydatos: {} | null, token: string): Promise<IRetornoBack> => {
+    console.log(`${process.env.REACT_APP_HOSTAPI}${url}`)
     const retorno = await fetch(`${process.env.REACT_APP_HOSTAPI}${url}`, {
         method: 'POST', // or 'PUT'
-        body: JSON.stringify(bodydatos),
         headers: { authorization: token, 'Content-Type': 'application/json' },
+        body: JSON.stringify(bodydatos),
     })
         .then((res) => res.json())
         .then((data) => data)
@@ -33,8 +34,9 @@ export const consultaPostBody = async (url: string, bodydatos: {} | null, token:
         return retorno;
 };
 
-export const consultaGet = async (url: string, token: string): Promise<IRetornoBack> => {
+export const consultaPost = async (url: string, token: string): Promise<IRetornoBack> => {
     const retorno = await fetch(`${process.env.REACT_APP_HOSTAPI}${url}`, {
+        method: 'POST',
         headers: { authorization: token, 'Content-Type': 'application/json' },
     })
         .then((res) => res.json())

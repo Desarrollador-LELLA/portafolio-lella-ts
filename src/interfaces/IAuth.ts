@@ -8,6 +8,7 @@ export interface IAuths {
     errorAuth: string;
     needVerificationAuth: boolean;
     successAuth: string;
+    indexAuth: boolean;
 }
 
 interface SetUsuarioActionAuth {
@@ -38,4 +39,9 @@ interface SuccessActionAuth {
     payload: string;
 }
 
-export type AuthActions = SetUsuarioActionAuth | LoadingActionAuth | SingOutActionAuth | ErrorActionAuth | NeedVerificationActionAuth | SuccessActionAuth;
+interface IndexAuthActionAuth {
+    type: AUTH_TYPE.INDEX_AUTH;
+    payload: boolean;
+}
+
+export type AuthActions = SetUsuarioActionAuth | LoadingActionAuth | SingOutActionAuth | ErrorActionAuth | NeedVerificationActionAuth | SuccessActionAuth | IndexAuthActionAuth;

@@ -3,19 +3,22 @@ import { AuthActions } from '../../interfaces/IAuth';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../store/index';
 import { AUTH_TYPE } from '../../types/authType';
-import { consultaGet, consultaPostBody } from '../../utilidades/metodosFirebase';
+import { consultaPost, consultaPostBody } from '../../utilidades/metodosFirebase';
+import { Dispatch } from 'redux';
 
-export const registraEntraGoogleAction =
-    (loadingTrue: () => void, loadingFalse: () => void): ThunkAction<void, RootState, null, AuthActions> =>
-    async (dispatch) => {
-        loadingTrue();
+export const registraEntraGoogleAction = (): ThunkAction<void, RootState, null, AuthActions> => {
+    return async (dispatch) => {
+        dispatch({
+            type: AUTH_TYPE.SET_LOADING,
+            payload: true,
+        });
         try {
             const provider = new allAuth.GoogleAuthProvider();
             const result = await allAuth.signInWithPopup(auth, provider);
             const adicional = allAuth.getAdditionalUserInfo(result);
             if (adicional?.isNewUser) {
                 const token = await result.user.getIdToken();
-                const retorno = await consultaPostBody('/auth/entrar', adicional.profile, token);
+                const retorno = await consultaPostBody('/auth/registrar', adicional.profile, token);
                 await allAuth.sendEmailVerification(result.user);
                 dispatch({
                     type: AUTH_TYPE.NEED_VERIFICATION,
@@ -27,7 +30,7 @@ export const registraEntraGoogleAction =
             } else {
                 if (adicional) {
                     const token = await result.user.getIdToken();
-                    const retorno = await consultaGet('/auth/entrar', token);
+                    const retorno = await consultaPost('/auth/entrar', token);
                     dispatch({
                         type: AUTH_TYPE.SET_USER,
                         payload: retorno.resultado,
@@ -41,33 +44,40 @@ export const registraEntraGoogleAction =
                 payload: 'erroresList(err)',
             });
         } finally {
-            loadingFalse();
+            dispatch({
+                type: AUTH_TYPE.SET_LOADING,
+                payload: false,
+            });
         }
     };
+};
 
-export const salirAction =
-    (loadingTrue: () => void, loadingFalse: () => void): ThunkAction<void, RootState, null, AuthActions> =>
-    async (dispatch) => {
-        try {
-            loadingTrue();
-            await auth.signOut();
-            dispatch({
-                type: AUTH_TYPE.SIGN_OUT,
-            });
-        } catch (err) {
-            console.log(err);
-            dispatch({
-                type: AUTH_TYPE.SET_ERROR,
-                payload: 'erroresList(err)',
-            });
-        } finally {
-            loadingFalse();
-        }
-    };
+export const salirAction = (): ThunkAction<void, RootState, null, AuthActions> => async (dispatch) => {
+    try {
+        dispatch({
+            type: AUTH_TYPE.SET_LOADING,
+            payload: true,
+        });
+        await auth.signOut();
+        dispatch({
+            type: AUTH_TYPE.SIGN_OUT,
+        });
+    } catch (err) {
+        console.log(err);
+        dispatch({
+            type: AUTH_TYPE.SET_ERROR,
+            payload: 'erroresList(err)',
+        });
+    } finally {
+        dispatch({
+            type: AUTH_TYPE.SET_LOADING,
+            payload: false,
+        });
+    }
+};
 
 export const getUser = (): ThunkAction<void, RootState, null, AuthActions> => async (dispatch) => {
     try {
-        console.log('pregunto');
         dispatch({
             type: AUTH_TYPE.SET_LOADING,
             payload: true,
@@ -75,7 +85,7 @@ export const getUser = (): ThunkAction<void, RootState, null, AuthActions> => as
         auth.onAuthStateChanged(async (user) => {
             const token = await user?.getIdToken();
             if (token) {
-                const retorno = await consultaGet('/auth/entrar', token);
+                const retorno = await consultaPost('/auth/entrar', token);
                 dispatch({
                     type: AUTH_TYPE.SET_USER,
                     payload: retorno.resultado,
@@ -98,6 +108,15 @@ export const getUser = (): ThunkAction<void, RootState, null, AuthActions> => as
             payload: 'erroresList(err)',
         });
     }
+};
+
+export const indexAuthAction = (valor: boolean): ThunkAction<void, RootState, null, AuthActions> => {
+    return (dispatch) => {
+        dispatch({
+            type: AUTH_TYPE.INDEX_AUTH,
+            payload: valor,
+        });
+    };
 };
 
 // const uno = {

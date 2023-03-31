@@ -8,7 +8,7 @@ import icPortafolio from '../../imagenes/ic_portafolio.svg';
 import icContacto from '../../imagenes/ic_contacto.svg';
 import icSobre from '../../imagenes/ic_sobre.svg';
 import icEntrar from '../../imagenes/ic_entrar.svg';
-import { registraEntraGoogleAction, salirAction } from '../../../redux/actions/authAction';
+import { indexAuthAction, registraEntraGoogleAction, salirAction } from '../../../redux/actions/authAction';
 import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from '../../../redux/store';
 import { AuthActions } from '../../../interfaces/IAuth';
@@ -28,9 +28,9 @@ const NavHeader: FC<INavHeaderProps> = () => {
     const onClickEntrar = (e: React.BaseSyntheticEvent) => {
         const elemento = e.currentTarget.getElementsByTagName('span');
         if (elemento[0].innerText === 'Salir') {
-            dispatch(salirAction(() => setLoading(true), () => setLoading(false)));
+            dispatch(salirAction());
         } else {
-            dispatch(registraEntraGoogleAction(() => setLoading(true), () => setLoading(false)));
+            dispatch(registraEntraGoogleAction());
         }
     };
 

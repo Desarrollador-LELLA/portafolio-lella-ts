@@ -8,6 +8,7 @@ const initialState: IAuths = {
     errorAuth: '',
     needVerificationAuth: false,
     successAuth: '',
+    indexAuth: true,
 };
 
 const authReducer = (state = initialState, action: AuthActions) => {
@@ -39,6 +40,11 @@ const authReducer = (state = initialState, action: AuthActions) => {
             return {
                 ...state,
                 needVerificationAuth: true,
+            };
+        case AUTH_TYPE.INDEX_AUTH:
+            return {
+                ...state,
+                indexAuth: action.payload,
             };
         case AUTH_TYPE.SET_SUCCESS:
             return {
