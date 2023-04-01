@@ -84,6 +84,7 @@ export const getUser = (): ThunkAction<void, RootState, null, AuthActions> => as
         });
         auth.onAuthStateChanged(async (user) => {
             const token = await user?.getIdToken();
+            console.log(token)
             if (token) {
                 const retorno = await consultaPost('/auth/entrar', token);
                 dispatch({

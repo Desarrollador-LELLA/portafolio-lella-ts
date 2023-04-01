@@ -21,7 +21,6 @@ const NavHeader: FC<INavHeaderProps> = () => {
     const dispatch = useDispatch<ThunkDispatch<RootState, null, AuthActions>>();
 
     const [show, setShow] = useState(false);
-    const [loading, setLoading] = useState(false)
 
     const handleClose = () => setShow(!show);
 
