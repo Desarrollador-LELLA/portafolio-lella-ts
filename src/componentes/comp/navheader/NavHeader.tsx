@@ -78,7 +78,7 @@ const NavHeader: FC<INavHeaderProps> = () => {
                 </Offcanvas>
                 <Nav.Item className='m-auto'></Nav.Item>
                 <Nav.Item className='justify-content-end'>
-                    <Button variant='none' onClick={onClickEntrar} disabled={loadingAuth} id='idedelelemento'>
+                    <Button variant='none' onClick={onClickEntrar} disabled={loadingAuth} id='idedelelemento' hidden={true}>
                         {loadingAuth ? (
                             <Spinner animation='grow' variant='success' />
                         ) : (
