@@ -40,6 +40,8 @@ body {
   --bs-btn-border-color: rgb(124, 198, 118);
   --bs-btn-hover-bg: rgb(41, 66, 39);
   --bs-btn-hover-border-color: rgb(41, 66, 39);
+  --bs-btn-active-bg: rgb(124, 198, 118);
+  --bs-btn-active-border-color: rgb(124, 198, 118);
 }
 
 .offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl {
@@ -55,4 +57,12 @@ body {
 .offcanvas-header {
   background: var(--bs-offcanvas-color);
   color: var(--bs-offcanvas-bg);
+}
+
+.btn:hover .btnicono {
+  fill: var(--bs-btn-hover-color);
+}
+
+.btn:active .btnicono {
+  fill: var(--bs-btn-color);
 }
