@@ -4,14 +4,20 @@ import { Button, Card, Col, OverlayTrigger, Tooltip, TooltipProps } from 'react-
 import IcDetalle from '../../imagenes/IcDetalle';
 import IcGitHub from '../../imagenes/IcGitHub';
 import IcMundo from '../../imagenes/IcMundo';
+import { Link } from 'react-router-dom';
 
 interface ICardPotafolioProps {
    imagen: string;
    titulo: string;
    descripcion: string;
+   linkgithub?: string;
+   linkweb?: string;
+   habilitada: boolean;
 }
 
-const CardPotafolio: FC<ICardPotafolioProps> = ({ imagen, titulo, descripcion }) => {
+const CardPotafolio: FC<ICardPotafolioProps> = ({ imagen, titulo, descripcion, linkgithub, linkweb, habilitada }) => {
+   const onClickDetalle = () => {};
+
    const renderTooltipGitHub = (props: JSX.IntrinsicAttributes & TooltipProps & RefAttributes<HTMLDivElement>) => (
       <Tooltip id='button-tooltip' {...props}>
          Visitar Git Hub
@@ -51,9 +57,12 @@ const CardPotafolio: FC<ICardPotafolioProps> = ({ imagen, titulo, descripcion })
                      </Button>
                   </OverlayTrigger>
                   <OverlayTrigger placement='bottom' delay={{ show: 250, hide: 400 }} overlay={renderTooltipDetalles}>
-                     <Button>
+                     <Link className={`btn btn-primary`} to={`/detalle/${101}`}>
                         <IcDetalle width='24px' height='24px' />
-                     </Button>
+                     </Link>
+                     {/* <Button>
+                        <IcDetalle width='24px' height='24px' />
+                     </Button> */}
                   </OverlayTrigger>
                </Card.Footer>
             </Card>

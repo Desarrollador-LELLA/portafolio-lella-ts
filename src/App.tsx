@@ -11,6 +11,7 @@ import { getUser } from './redux/actions/authAction';
 import { ThunkDispatch } from 'redux-thunk';
 import { AuthActions } from './interfaces/IAuth';
 import Portafolio from './componentes/paginas/portafolio/Portafolio';
+import DetallePortafolio from './componentes/paginas/detalleportafolio/DetallePortafolio';
 
 interface IAppProps {}
 
@@ -32,6 +33,7 @@ const App: FC<IAppProps> = () => {
                     <Route index element={<Inicio />} />
                     <Route path='sobremi' element={<SobreMi />} />
                     <Route path='portafolio' element={<Portafolio />} />
+                    <Route path='detalle/:id' element={<DetallePortafolio />} />
                     <Route path='contacto' element={<Tester />} />
                     {/* RUTAS NO ENCONTRADAS */}
                     <Route path='*' element={<Error />} />
