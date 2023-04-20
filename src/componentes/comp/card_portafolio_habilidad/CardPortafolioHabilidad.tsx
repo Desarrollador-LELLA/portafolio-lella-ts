@@ -10,8 +10,7 @@ const CardPortafolioHabilidad: FC<ICardPortafolioHabilidadProps> = () => {
       <Col xs='auto'>
          <Card bsPrefix={s.card_cardportafoliohabilidad} className={`h-100`} bg={`black`}>
             <Card.Body>
-               {/* <Card.Img src={'imagen'} /> */}
-               <IcGitHub />
+               <Card.Img src={'imagen'} />
                <Card.Text>{'nombre'}</Card.Text>
             </Card.Body>
          </Card>

@@ -13,7 +13,6 @@ const Layout: FC<ILayoutProps> = () => {
       <div className={`${s.contenedor_layout} py-2`}>
         <Outlet />
       </div>
-      <Consola />
     </>
   );
 };

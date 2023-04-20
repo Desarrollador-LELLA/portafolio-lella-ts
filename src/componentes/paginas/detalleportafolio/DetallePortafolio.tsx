@@ -24,7 +24,7 @@ const DetallePortafolio: FC<IDetallePortafolioProps> = () => {
             </Col>
          </Row>
          <Row xs='12' className={`${s.txt_modalventana} px-3`}>
-            <Col xs='12' sm='5'>
+            <Col xs='12' md='7'>
                <Carousel>
                   <Carousel.Item>
                      <img className='d-block w-100' src='https://clubdeltrade.com/wp-content/uploads/2019/01/Como_definir_o_mix_de_produtos_ideal.png' alt='First slide' />
@@ -51,16 +51,27 @@ const DetallePortafolio: FC<IDetallePortafolioProps> = () => {
                   </Carousel.Item>
                </Carousel>
             </Col>
-            <Col xs='12' sm='7' className={`${s.descripcion_detalleportafolio}`}>
-               <p>
-                  REACT NATIVE ES UN FRAMEWORK JAVASCRIPT PARA CREAR APLICACIONES REALES NATIVAS PARA IOS Y ANDROID, BASADO EN LA LIBREARÍA DE JAVASCRIPT REACT PARA LA CREACIÓN DE COMPONENTES VISUALES, CAMBIANDO EL PROPÓSITO DE LOS MISMOS PARA, EN LUGAR DE SER EJECUTADOS EN NAVEGADOR, CORRER DIRECTAMENTE SOBRE LAS PLATAFORMAS MÓVILES NATIVAS, EN ESTE CASO IOS Y ANDORID. ES DECIR, EN LUGAR DE
-                  DESARROLLAR UNA APLICACIÓN WEB HÍBRIDA O EN HTML5, LO QUE OBTIENES AL FINAL COMO RESULTADO ES UNA APLICACIÓN REAL NATIVA, INDISTINGUIBLE DE LA QUE PODRÍAS DESARROLLAR CON TU CÓDIGO EN OBJECTIVE-C O JAVA.
-               </p>
-            </Col>
-         </Row>
-         <Row>
-            <Col>
-               <CardPortafolioHabilidad />
+            <Col xs='12' md='5' className={`${s.descripcion_detalleportafolio}`}>
+               <Row>
+                  <Col>
+                  <h5 className={`${s.text_detalleportafolio}`}>Descripcion</h5>
+                     <p>
+                        REACT NATIVE ES UN FRAMEWORK JAVASCRIPT PARA CREAR APLICACIONES REALES NATIVAS PARA IOS Y ANDROID, BASADO EN LA LIBREARÍA DE JAVASCRIPT REACT PARA LA CREACIÓN DE COMPONENTES VISUALES, CAMBIANDO EL PROPÓSITO DE LOS MISMOS PARA, EN LUGAR DE SER EJECUTADOS EN NAVEGADOR, CORRER DIRECTAMENTE SOBRE LAS PLATAFORMAS MÓVILES NATIVAS, EN ESTE CASO IOS Y ANDORID. ES DECIR, EN LUGAR
+                        DE.
+                     </p>
+                  </Col>
+               </Row>
+               <Row>
+                  <Col>
+                     <h5 className={`${s.text_detalleportafolio}`}>Tecnologias Utilizadas</h5>
+                     <Row>
+                        <CardPortafolioHabilidad />
+                        <CardPortafolioHabilidad />
+                        <CardPortafolioHabilidad />
+                        <CardPortafolioHabilidad />
+                     </Row>
+                  </Col>
+               </Row>
             </Col>
          </Row>
       </>
