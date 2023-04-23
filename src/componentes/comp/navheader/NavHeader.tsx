@@ -41,6 +41,7 @@ const NavHeader: FC<INavHeaderProps> = () => {
                         DESARROLLADOR-LELLA
                     </Link>
                 </Container>
+                <img src={icEntrar} />
             </Navbar>
             <Nav className={`${s.nav_navheader}`} onSelect={(selectedKey) => alert(`selected ${selectedKey} Esto se esta Construyendo`)}>
                 <Nav.Item className='d-sm-none' onClick={handleClose}>
