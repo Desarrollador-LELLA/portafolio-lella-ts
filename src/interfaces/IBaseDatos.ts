@@ -1,4 +1,4 @@
-export interface IRedes {
+export interface IRedProps {
     id: number;
     nombre: string;
     urlRed: string;

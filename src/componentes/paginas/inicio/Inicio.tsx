@@ -31,6 +31,7 @@ const Inicio: FC<IInicioProps> = () => {
                 <h1 className={`${s.text_inicio}`}>Mis Redes</h1>
             </Row>
             <Row xs='auto' className='text-center justify-content-center g-3'>
+                
                 <CardRedes id={redes[0].id} nombre={redes[0].nombre} urlRed={redes[0].url} imagen={icGithub} />
                 <CardRedes id={redes[1].id} nombre={redes[1].nombre} urlRed={redes[1].url} imagen={icLinkedin} />
                 <CardRedes id={redes[2].id} nombre={redes[2].nombre} urlRed={redes[2].url} imagen={icTiktok} />
