@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Image, Col, Row } from 'react-bootstrap';
 import s from './inicio.module.css';
 import { redes } from '../../../utilidades/datos';
@@ -8,10 +8,39 @@ import icGithub from '../../imagenes/ic_github.svg';
 import icLinkedin from '../../imagenes/ic_linkedin.svg';
 import icTiktok from '../../imagenes/ic_tiktok.svg';
 import icYoutube from '../../imagenes/ic_youtube.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../redux/store';
+import Loading from '../../comp/loading/Loading';
+import { ThunkDispatch } from 'redux-thunk';
+import { RedActions } from '../../../interfaces/IRed';
+import { getListRedes, setErrorRedAction, setListaRedAction, setLoadingRedAction } from '../../../redux/actions/redesAction';
 
 interface IInicioProps {}
 
 const Inicio: FC<IInicioProps> = () => {
+
+    const { loadingRed, redesRed } = useSelector((state: RootState) => state.red);
+    const dispatch = useDispatch<ThunkDispatch<RootState, null, RedActions>>();
+
+    useEffect(() => {
+        const onUseEffect = () => {
+           getListRedes({
+              onLoading: (v) => {
+                 dispatch(setLoadingRedAction(v));
+              },
+              onError: (msg) => {
+                console.log(msg)
+                 dispatch(setErrorRedAction(msg));
+              },
+              onSuccess: (msg) => {
+                 dispatch(setListaRedAction(msg.resultado));
+              },
+           });
+        };
+  
+        onUseEffect();
+     }, []);
+
     return (
         <>
             <Row className='text-center justify-content-center'>
@@ -31,12 +60,12 @@ const Inicio: FC<IInicioProps> = () => {
                 <h1 className={`${s.text_inicio}`}>Mis Redes</h1>
             </Row>
             <Row xs='auto' className='text-center justify-content-center g-3'>
-                
-                <CardRedes id={redes[0].id} nombre={redes[0].nombre} urlRed={redes[0].url} imagen={icGithub} />
+            {loadingRed ? <Loading /> : redesRed.map((r) => <CardRedes key={r.id} nombre={r.nombre} link={r.link} imagen={r.imagen} id={r.id} />)}
+                {/* <CardRedes id={redes[0].id} nombre={redes[0].nombre} urlRed={redes[0].url} imagen={icGithub} />
                 <CardRedes id={redes[1].id} nombre={redes[1].nombre} urlRed={redes[1].url} imagen={icLinkedin} />
                 <CardRedes id={redes[2].id} nombre={redes[2].nombre} urlRed={redes[2].url} imagen={icTiktok} />
                 <CardRedes id={redes[3].id} nombre={redes[3].nombre} urlRed={redes[3].url} imagen={icFacebook} />
-                <CardRedes id={redes[4].id} nombre={redes[4].nombre} urlRed={redes[4].url} imagen={icYoutube} />
+                <CardRedes id={redes[4].id} nombre={redes[4].nombre} urlRed={redes[4].url} imagen={icYoutube} /> */}
             </Row>
         </>
     );
