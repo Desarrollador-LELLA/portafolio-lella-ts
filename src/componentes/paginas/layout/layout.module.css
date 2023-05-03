@@ -1,5 +1,5 @@
 .contenedor_layout {
-    height: calc(100% - 95px);
+    height: calc(100% - 107px);
     overflow-x: hidden;
     scrollbar-color: rgb(124, 198, 118) rgb(0, 0, 0);
     scrollbar-width: thin;
