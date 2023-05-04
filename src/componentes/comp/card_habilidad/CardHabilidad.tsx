@@ -1,6 +1,5 @@
-import React, { FC, useState } from 'react';
-import { Badge, Button, Card, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { FC, useState } from 'react';
+import { Card, Col } from 'react-bootstrap';
 import { IHabilidades } from '../../../interfaces/IBaseDatos';
 import ModalVentana from '../modal_ventana/ModalVentana';
 import s from './cardhabilidad.module.css'
