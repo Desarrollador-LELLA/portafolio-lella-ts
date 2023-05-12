@@ -60,9 +60,6 @@ const CardPotafolio: FC<ICardPotafolioProps> = ({ imagen, titulo, descripcion, l
                      <Link className={`btn btn-primary`} to={`/detalle/${101}`}>
                         <IcDetalle width='24px' height='24px' />
                      </Link>
-                     {/* <Button>
-                        <IcDetalle width='24px' height='24px' />
-                     </Button> */}
                   </OverlayTrigger>
                </Card.Footer>
             </Card>
