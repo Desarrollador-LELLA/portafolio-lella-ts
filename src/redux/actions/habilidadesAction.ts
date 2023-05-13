@@ -14,7 +14,7 @@ interface IListLimit<A> extends IMetodosProps<A> {
 export const getListHabilidades = async (f: IListLimit<IRetornoBackHabilidades>) => {
    try {
       f.onLoading(true);
-      const retorno = await consultaStandar<IRetornoBackHabilidades>({ url: `/redes/listar?registros=${f.registros}&num=${f.numpag}`, method: 'GET' });
+      const retorno = await consultaStandar<IRetornoBackHabilidades>({ url: `/habilidades/listar?registros=${f.registros}&num=${f.numpag}`, method: 'GET' });
       if (retorno.confirma) {
          f.onSuccess(retorno);
       } else {
