@@ -3,11 +3,6 @@ import { Image, Col, Row } from 'react-bootstrap';
 import s from './inicio.module.css';
 import { redes } from '../../../utilidades/datos';
 import CardRedes from '../../comp/card_redes/CardRedes';
-import icFacebook from '../../imagenes/ic_facebook.svg';
-import icGithub from '../../imagenes/ic_github.svg';
-import icLinkedin from '../../imagenes/ic_linkedin.svg';
-import icTiktok from '../../imagenes/ic_tiktok.svg';
-import icYoutube from '../../imagenes/ic_youtube.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import Loading from '../../comp/loading/Loading';
@@ -61,11 +56,6 @@ const Inicio: FC<IInicioProps> = () => {
          </Row>
          <Row xs='auto' className='text-center justify-content-center g-3'>
             {loadingRed ? <Loading /> : redesRed.map((r) => <CardRedes key={r.id} nombre={r.nombre} link={r.link} imagen={r.imagen} id={r.id} />)}
-            {/* <CardRedes id={redes[0].id} nombre={redes[0].nombre} urlRed={redes[0].url} imagen={icGithub} />
-                <CardRedes id={redes[1].id} nombre={redes[1].nombre} urlRed={redes[1].url} imagen={icLinkedin} />
-                <CardRedes id={redes[2].id} nombre={redes[2].nombre} urlRed={redes[2].url} imagen={icTiktok} />
-                <CardRedes id={redes[3].id} nombre={redes[3].nombre} urlRed={redes[3].url} imagen={icFacebook} />
-                <CardRedes id={redes[4].id} nombre={redes[4].nombre} urlRed={redes[4].url} imagen={icYoutube} /> */}
          </Row>
          <Row xs='auto' className='text-center justify-content-center'>
                <h4 className={`${s.text_inicio} mt-2`}>Proximamente</h4>

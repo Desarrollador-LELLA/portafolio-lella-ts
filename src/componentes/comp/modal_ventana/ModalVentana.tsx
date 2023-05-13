@@ -6,7 +6,7 @@ import s from './modalventana.module.css';
 
 const ModalVentana: FC<IModalsHabilidades> = ({ show, handleClose, hablidad }) => {
 
-    const { id, imagen, nombre, url, nivel, descripcion } = hablidad;
+    const { id, imagen, nombre, link, nivel, descripcion } = hablidad;
     const estrellas = ['☆', '☆', '☆', '☆', '☆']
 
     return (
@@ -40,7 +40,7 @@ const ModalVentana: FC<IModalsHabilidades> = ({ show, handleClose, hablidad }) =
                 </Row>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={() => window.open(url, '_blank')}>
+                <Button onClick={() => window.open(link, '_blank')}>
                     Mas Informacion
                 </Button>
             </Modal.Footer>

@@ -5,11 +5,11 @@ export interface IRedProps {
     imagen: string;
 }
 
-export interface IHabilidades {
+export interface IHabilidadesProps {
     id: number;
     nombre: string;
     imagen: string;
-    url: string;
+    link: string;
     nivel: number;
     descripcion: string;
 }
@@ -18,4 +18,14 @@ export interface IMetodosProps<A> {
     onLoading: (value: boolean) => void;
     onError: (msg: string) => void;
     onSuccess: (msg: A) => void;
+ }
+
+ export interface IListasPaginas<A> {
+    pags: number;
+    items: Array<A>
+ }
+ 
+ export interface IListaPagActual<B> {
+    paga: number;
+    listpags: IListasPaginas<B> 
  }
