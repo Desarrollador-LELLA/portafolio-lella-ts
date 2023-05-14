@@ -1,4 +1,4 @@
-import { IHabilidadesProps, IListasPaginas, IRedProps } from './IBaseDatos';
+import { IHabilidadesProps, IListasPaginas, IPotafolioProps, IRedProps } from './IBaseDatos';
 import { IUsuario } from './IUsuario';
 
 export interface IRetornoBack {
@@ -12,6 +12,10 @@ export interface IRetornoBackRedes extends IRetornoBack {
 
 export interface IRetornoBackHabilidades extends IRetornoBack {
     resultado: IListasPaginas<IHabilidadesProps>;
+ }
+
+ export interface IRetornoBackProyectos extends IRetornoBack {
+    resultado: IListasPaginas<IPotafolioProps>;
  }
 
 export interface IRetornoBackAuth extends IRetornoBack {

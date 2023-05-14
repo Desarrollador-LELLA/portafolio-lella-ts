@@ -14,14 +14,29 @@ export interface IHabilidadesProps {
    descripcion: string;
 }
 
+export interface IEstadoProps {
+   id: number;
+   nombre: string;
+   color: string;
+}
+
+export interface IImagenProps {
+   id: number;
+   nombre: string;
+   link: string;
+}
+
 export interface IPotafolioProps {
    id: number;
+   Estado: IEstadoProps;
+   habilidades?: Array<IHabilidadesProps>;
+   imagenes?: Array<IImagenProps>;
    imagen: string;
    titulo: string;
-   descripcion: string;
-   linkGithub?: string;
-   linkWeb?: string;
-   habilitada: boolean;
+   descripcionCorta: string;
+   descripcion?: string;
+   linkGitHub: string;
+   linkWeb: string;
 }
 
 export interface IMetodosProps<A> {

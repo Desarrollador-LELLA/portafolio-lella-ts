@@ -5,11 +5,12 @@ import ModalVentana from '../modal_ventana/ModalVentana';
 import s from './cardhabilidad.module.css';
 
 //'★☆'
-const inicial = ['☆', '☆', '☆', '☆', '☆'];
+const inicial: Array<string> = ['☆', '☆', '☆', '☆', '☆'];
 
 const CardHabilidad: FC<IHabilidadesProps> = ({ id, imagen, nombre, link, nivel, descripcion }) => {
-   const [estrellas, setEstrellas] = useState(inicial);
-   const [show, setShow] = useState(false);
+   const [estrellas, setEstrellas] = useState<Array<string>>(inicial);
+   const [show, setShow] = useState<boolean>(false);
+   
    const abrirCerrarModal = () => setShow(!show);
 
    return (
