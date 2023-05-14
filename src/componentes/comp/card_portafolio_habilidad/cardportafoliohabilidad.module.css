@@ -1,8 +1,7 @@
 .card_cardportafoliohabilidad {
-    cursor: pointer;
     color: rgb(124, 198, 118);
     font-weight: bold;
-    width: 120px;
+    width: 220px;
     border: solid 3px rgb(124, 198, 118);
     --bs-card-spacer-y: 1rem;
     --bs-card-spacer-x: 1rem;

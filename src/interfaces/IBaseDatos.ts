@@ -9,7 +9,7 @@ export interface IHabilidadesProps {
    id?: number;
    nombre: string;
    imagen: string;
-   link: string;
+   link?: string;
    nivel?: number | any;
    descripcion?: string;
 }
