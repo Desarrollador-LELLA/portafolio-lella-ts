@@ -1,5 +1,5 @@
-import { FC, useEffect, useState } from 'react';
-import { Badge, Carousel, Col, Image, Row } from 'react-bootstrap';
+import { FC, RefAttributes, useEffect, useState } from 'react';
+import { Badge, Button, Carousel, Col, Image, OverlayTrigger, Row, Tooltip, TooltipProps } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import IcAtras from '../../imagenes/IcAtras';
@@ -13,6 +13,8 @@ import { ProyectoActions } from '../../../interfaces/IProyecto';
 import { IPotafolioProps } from '../../../interfaces/IBaseDatos';
 import { useSelector } from 'react-redux';
 import Loading from '../../comp/loading/Loading';
+import IcGitHub from '../../imagenes/IcGitHub';
+import IcMundo from '../../imagenes/IcMundo';
 
 const initial: IPotafolioProps = {
    id: '',
@@ -52,9 +54,19 @@ const DetallePortafolio: FC<IDetallePortafolioProps> = () => {
       };
 
       onUseEffect();
-      // if (idX) {
-      // }
    }, [dispatch, id]);
+
+   const renderTooltipGitHub = (props: JSX.IntrinsicAttributes & TooltipProps & RefAttributes<HTMLDivElement>) => (
+      <Tooltip id='button-tooltip' {...props}>
+         Visitar Git Hub
+      </Tooltip>
+   );
+
+   const renderTooltipWeb = (props: JSX.IntrinsicAttributes & TooltipProps & RefAttributes<HTMLDivElement>) => (
+      <Tooltip id='button-tooltip' {...props}>
+         Visitar Sito Web
+      </Tooltip>
+   );
 
    return (
       <>
@@ -88,6 +100,20 @@ const DetallePortafolio: FC<IDetallePortafolioProps> = () => {
                   </Col>
                   <Col xs='12' md='5' className={`${s.descripcion_detalleportafolio}`}>
                      <Row>
+                        <Col>
+                           <OverlayTrigger placement='bottom' delay={{ show: 250, hide: 400 }} overlay={renderTooltipGitHub}>
+                              <Button className='me-2' onClick={() => window.open(proyecto.linkGitHub, '_blank')} disabled={proyecto.linkGitHub ? false : true}>
+                                 <IcGitHub width='24px' height='24px' />
+                              </Button>
+                           </OverlayTrigger>
+                           <OverlayTrigger placement='bottom' delay={{ show: 250, hide: 400 }} overlay={renderTooltipWeb}>
+                              <Button className='me-2' onClick={() => window.open(proyecto.linkWeb, '_blank')} disabled={proyecto.linkWeb ? false : true}>
+                                 <IcMundo width='24px' height='24px' />
+                              </Button>
+                           </OverlayTrigger>
+                        </Col>
+                     </Row>
+                     <Row className='mt-2'>
                         <Col>
                            <h5 className={`${s.text_detalleportafolio}`}>Informacion</h5>
                            <p>{proyecto.descripcionCorta}</p>

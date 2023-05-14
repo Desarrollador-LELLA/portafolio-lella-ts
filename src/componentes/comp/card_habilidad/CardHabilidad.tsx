@@ -18,7 +18,7 @@ const CardHabilidad: FC<IHabilidadesProps> = ({ id, imagen, nombre, link, nivel,
          <ModalVentana show={show} handleClose={abrirCerrarModal} hablidad={{ id, imagen, nombre, link, nivel, descripcion }} />
          <Col xs='auto'>
             <Card bsPrefix={s.cardhabilidad_inicio} className={`h-100`} bg={`black`} onClick={abrirCerrarModal}>
-               <Card.Body>
+               <Card.Body className='p-1'>
                   <Card.Img src={imagen} />
                   <Card.Text className='m-0'>{nombre}</Card.Text>
                   <Card.Text className='m-0'>

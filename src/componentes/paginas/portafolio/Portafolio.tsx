@@ -42,7 +42,10 @@ const Portafolio: FC<IPortafolioProps> = () => {
          <Row>
             <h1 className={`${s.text_portafolio} text-center`}>Proyectos</h1>
          </Row>
-         <Row>
+         <Row xs='auto' className='text-center justify-content-center g-3'>
+            {loadingProyecto ? <Loading /> : proyectosProyecto.listpags.items.map((r) => <CardPotafolio key={r.id} id={r.id} Estado={r.Estado} imagen={r.imagen} titulo={r.titulo} descripcionCorta={r.descripcionCorta} linkGitHub={r.linkGitHub} linkWeb={r.linkWeb} />)}
+         </Row>
+         <Row className='pt-3'>
             <Col>
                <Paginado
                   pags={proyectosProyecto.listpags.pags}
@@ -58,9 +61,6 @@ const Portafolio: FC<IPortafolioProps> = () => {
                   }}
                />
             </Col>
-         </Row>
-         <Row xs='auto' className='text-center justify-content-center g-3'>
-            {loadingProyecto ? <Loading /> : proyectosProyecto.listpags.items.map((r) => <CardPotafolio key={r.id} id={r.id} Estado={r.Estado} imagen={r.imagen} titulo={r.titulo} descripcionCorta={r.descripcionCorta} linkGitHub={r.linkGitHub} linkWeb={r.linkWeb} />)}
          </Row>
       </>
    );

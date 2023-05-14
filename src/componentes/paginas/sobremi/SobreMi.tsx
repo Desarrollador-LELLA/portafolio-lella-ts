@@ -20,7 +20,7 @@ const SobreMi: FC<ISobreMiProps> = () => {
       const onUseEffect = () => {
          getListHabilidades({
             numpag: habilidadesHabilidad.paga,
-            registros: 1,
+            registros: 20,
             onLoading: (v) => {
                dispatch(setLoadingHabilidadAction(v));
             },
@@ -52,7 +52,7 @@ const SobreMi: FC<ISobreMiProps> = () => {
          <Row className='px-3'>
             <h1 className={`${s.text_sobremi}`}>Mis Habilidades</h1>
          </Row>
-         <Row xs='auto' className='text-center justify-content-center g-3'>
+         <Row xs='auto' className='text-center justify-content-center g-2'>
             {loadingHabilidad ? <Loading /> : habilidadesHabilidad.listpags.items.map((r) => <CardHabilidad key={r.id} nombre={r.nombre} link={r.link} imagen={r.imagen} id={r.id} nivel={r.nivel} descripcion={r.descripcion} />)}
          </Row>
          <Row className='pt-3'>
