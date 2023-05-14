@@ -1,13 +1,9 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
-interface IErrorProps { }
+interface IErrorProps {}
 
 const Error: FC<IErrorProps> = () => {
-    return (
-        <div>
-            ERROR PAGINA NO ENCONTRADA
-        </div>
-    );
+   return <div>ERROR PAGINA NO ENCONTRADA</div>;
 };
 
 export default Error;

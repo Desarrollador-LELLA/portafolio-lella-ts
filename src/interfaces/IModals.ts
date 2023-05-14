@@ -1,7 +1,7 @@
-import { IHabilidadesProps } from "./IBaseDatos";
+import { IHabilidadesProps } from './IBaseDatos';
 
 export interface IModalsHabilidades {
-    show: boolean;
-    handleClose: () => void;
-    hablidad: IHabilidadesProps;
+   show: boolean;
+   handleClose: () => void;
+   hablidad: IHabilidadesProps;
 }

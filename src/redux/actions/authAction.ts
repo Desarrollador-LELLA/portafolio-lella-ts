@@ -4,120 +4,119 @@ import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../store/index';
 import { AUTH_TYPE } from '../../types/authType';
 import { consultaPost, consultaPostBody } from '../../utilidades/metodosFirebase';
-import { Dispatch } from 'redux';
 
 export const registraEntraGoogleAction = (): ThunkAction<void, RootState, null, AuthActions> => {
-    return async (dispatch) => {
-        dispatch({
-            type: AUTH_TYPE.SET_LOADING,
-            payload: true,
-        });
-        try {
-            const provider = new allAuth.GoogleAuthProvider();
-            const result = await allAuth.signInWithPopup(auth, provider);
-            const adicional = allAuth.getAdditionalUserInfo(result);
-            if (adicional?.isNewUser) {
-                const token = await result.user.getIdToken();
-                const retorno = await consultaPostBody('/auth/registrar', adicional.profile, token);
-                await allAuth.sendEmailVerification(result.user);
-                dispatch({
-                    type: AUTH_TYPE.NEED_VERIFICATION,
-                });
-                dispatch({
-                    type: AUTH_TYPE.SET_USER,
-                    payload: retorno.resultado,
-                });
-            } else {
-                if (adicional) {
-                    const token = await result.user.getIdToken();
-                    const retorno = await consultaPost('/auth/entrar', token);
-                    dispatch({
-                        type: AUTH_TYPE.SET_USER,
-                        payload: retorno.resultado,
-                    });
-                }
+   return async (dispatch) => {
+      dispatch({
+         type: AUTH_TYPE.SET_LOADING,
+         payload: true,
+      });
+      try {
+         const provider = new allAuth.GoogleAuthProvider();
+         const result = await allAuth.signInWithPopup(auth, provider);
+         const adicional = allAuth.getAdditionalUserInfo(result);
+         if (adicional?.isNewUser) {
+            const token = await result.user.getIdToken();
+            const retorno = await consultaPostBody('/auth/registrar', adicional.profile, token);
+            await allAuth.sendEmailVerification(result.user);
+            dispatch({
+               type: AUTH_TYPE.NEED_VERIFICATION,
+            });
+            dispatch({
+               type: AUTH_TYPE.SET_USER,
+               payload: retorno.resultado,
+            });
+         } else {
+            if (adicional) {
+               const token = await result.user.getIdToken();
+               const retorno = await consultaPost('/auth/entrar', token);
+               dispatch({
+                  type: AUTH_TYPE.SET_USER,
+                  payload: retorno.resultado,
+               });
             }
-        } catch (err) {
-            console.log(err);
-            dispatch({
-                type: AUTH_TYPE.SET_ERROR,
-                payload: 'erroresList(err)',
-            });
-        } finally {
-            dispatch({
-                type: AUTH_TYPE.SET_LOADING,
-                payload: false,
-            });
-        }
-    };
+         }
+      } catch (err) {
+         console.log(err);
+         dispatch({
+            type: AUTH_TYPE.SET_ERROR,
+            payload: 'erroresList(err)',
+         });
+      } finally {
+         dispatch({
+            type: AUTH_TYPE.SET_LOADING,
+            payload: false,
+         });
+      }
+   };
 };
 
 export const salirAction = (): ThunkAction<void, RootState, null, AuthActions> => async (dispatch) => {
-    try {
-        dispatch({
-            type: AUTH_TYPE.SET_LOADING,
-            payload: true,
-        });
-        await auth.signOut();
-        dispatch({
-            type: AUTH_TYPE.SIGN_OUT,
-        });
-    } catch (err) {
-        console.log(err);
-        dispatch({
-            type: AUTH_TYPE.SET_ERROR,
-            payload: 'erroresList(err)',
-        });
-    } finally {
-        dispatch({
-            type: AUTH_TYPE.SET_LOADING,
-            payload: false,
-        });
-    }
+   try {
+      dispatch({
+         type: AUTH_TYPE.SET_LOADING,
+         payload: true,
+      });
+      await auth.signOut();
+      dispatch({
+         type: AUTH_TYPE.SIGN_OUT,
+      });
+   } catch (err) {
+      console.log(err);
+      dispatch({
+         type: AUTH_TYPE.SET_ERROR,
+         payload: 'erroresList(err)',
+      });
+   } finally {
+      dispatch({
+         type: AUTH_TYPE.SET_LOADING,
+         payload: false,
+      });
+   }
 };
 
 export const getUser = (): ThunkAction<void, RootState, null, AuthActions> => async (dispatch) => {
-    try {
-        dispatch({
-            type: AUTH_TYPE.SET_LOADING,
-            payload: true,
-        });
-        auth.onAuthStateChanged(async (user) => {
-            const token = await user?.getIdToken();
-            console.log(token)
-            if (token) {
-                const retorno = await consultaPost('/auth/entrar', token);
-                dispatch({
-                    type: AUTH_TYPE.SET_USER,
-                    payload: retorno.resultado,
-                });
-                if (!user?.emailVerified) {
-                    dispatch({
-                        type: AUTH_TYPE.NEED_VERIFICATION,
-                    });
-                }
-            }
+   try {
+      dispatch({
+         type: AUTH_TYPE.SET_LOADING,
+         payload: true,
+      });
+      auth.onAuthStateChanged(async (user) => {
+         const token = await user?.getIdToken();
+         console.log(token);
+         if (token) {
+            const retorno = await consultaPost('/auth/entrar', token);
             dispatch({
-                type: AUTH_TYPE.SET_LOADING,
-                payload: false,
+               type: AUTH_TYPE.SET_USER,
+               payload: retorno.resultado,
             });
-        });
-    } catch (err) {
-        console.log(err);
-        dispatch({
-            type: AUTH_TYPE.SET_ERROR,
-            payload: 'erroresList(err)',
-        });
-    }
+            if (!user?.emailVerified) {
+               dispatch({
+                  type: AUTH_TYPE.NEED_VERIFICATION,
+               });
+            }
+         }
+         dispatch({
+            type: AUTH_TYPE.SET_LOADING,
+            payload: false,
+         });
+      });
+   } catch (err) {
+      console.log(err);
+      dispatch({
+         type: AUTH_TYPE.SET_ERROR,
+         payload: 'erroresList(err)',
+      });
+   }
 };
 
 export const indexAuthAction = (valor: boolean): ThunkAction<void, RootState, null, AuthActions> => {
-    return (dispatch) => {
-        dispatch({
-            type: AUTH_TYPE.INDEX_AUTH,
-            payload: valor,
-        });
-    };
+   return (dispatch) => {
+      dispatch({
+         type: AUTH_TYPE.INDEX_AUTH,
+         payload: valor,
+      });
+   };
 };
 
 // const uno = {

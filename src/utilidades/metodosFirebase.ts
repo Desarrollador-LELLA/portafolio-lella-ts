@@ -19,7 +19,7 @@
 // };
 //
 
-import { IRetornoBack, IRetornoBackAuth } from '../interfaces/IRetornos';
+import { IRetornoBackAuth } from '../interfaces/IRetornos';
 
 interface IConsultas {
    url: string;
@@ -35,7 +35,7 @@ export const consultaStandar = async <T>({ url, method }: IConsultas): Promise<T
       .then((res) => res.json())
       .then((data) => data)
       .catch((err) => {
-         console.log(err)
+         console.log(err);
          if (err.message === 'Failed to fetch') {
             return { mensaje: err.message, resultado: {}, confirma: false };
          }

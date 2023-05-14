@@ -1,7 +1,6 @@
 import { FC } from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col } from 'react-bootstrap';
 import s from './cardportafoliohabilidad.module.css';
-import IcGitHub from '../../imagenes/IcGitHub';
 
 interface ICardPortafolioHabilidadProps {}
 

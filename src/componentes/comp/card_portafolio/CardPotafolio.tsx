@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import { IPotafolioProps } from '../../../interfaces/IBaseDatos';
 
 const CardPotafolio: FC<IPotafolioProps> = ({ id, Estado, imagen, titulo, descripcionCorta, linkGitHub, linkWeb }) => {
-   const onClickDetalle = () => {};
 
    const renderTooltipGitHub = (props: JSX.IntrinsicAttributes & TooltipProps & RefAttributes<HTMLDivElement>) => (
       <Tooltip id='button-tooltip' {...props}>

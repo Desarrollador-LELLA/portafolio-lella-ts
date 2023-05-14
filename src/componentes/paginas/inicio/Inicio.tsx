@@ -1,7 +1,6 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import { Image, Col, Row } from 'react-bootstrap';
 import s from './inicio.module.css';
-import { redes } from '../../../utilidades/datos';
 import CardRedes from '../../comp/card_redes/CardRedes';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
@@ -9,8 +8,8 @@ import Loading from '../../comp/loading/Loading';
 import { ThunkDispatch } from 'redux-thunk';
 import { RedActions } from '../../../interfaces/IRed';
 import { getListRedes, setErrorRedAction, setListaRedAction, setLoadingRedAction } from '../../../redux/actions/redesAction';
-import icAppStore from '../../imagenes/ic_app_store.png'
-import icPlayStore from '../../imagenes/ic_play_store.png'
+import icAppStore from '../../imagenes/ic_app_store.png';
+import icPlayStore from '../../imagenes/ic_play_store.png';
 
 interface IInicioProps {}
 
@@ -35,7 +34,7 @@ const Inicio: FC<IInicioProps> = () => {
       };
 
       onUseEffect();
-   }, []);
+   }, [dispatch]);
 
    return (
       <>
@@ -58,7 +57,7 @@ const Inicio: FC<IInicioProps> = () => {
             {loadingRed ? <Loading /> : redesRed.map((r) => <CardRedes key={r.id} nombre={r.nombre} link={r.link} imagen={r.imagen} id={r.id} />)}
          </Row>
          <Row xs='auto' className='text-center justify-content-center'>
-               <h4 className={`${s.text_inicio} mt-2`}>Proximamente</h4>
+            <h4 className={`${s.text_inicio} mt-2`}>Proximamente</h4>
          </Row>
          <Row xs='auto' className='text-center justify-content-center'>
             <Col xs='auto'>

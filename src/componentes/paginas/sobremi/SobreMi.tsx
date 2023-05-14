@@ -35,7 +35,7 @@ const SobreMi: FC<ISobreMiProps> = () => {
       };
 
       onUseEffect();
-   }, [habilidadesHabilidad.paga]);
+   }, [habilidadesHabilidad.paga, dispatch]);
 
    return (
       <>
@@ -51,23 +51,6 @@ const SobreMi: FC<ISobreMiProps> = () => {
          </Row>
          <Row className='px-3'>
             <h1 className={`${s.text_sobremi}`}>Mis Habilidades</h1>
-         </Row>
-         <Row>
-            <Col>
-               <Paginado
-                  pags={habilidadesHabilidad.listpags.pags}
-                  paga={habilidadesHabilidad.paga}
-                  dispatchNext={() => {
-                     dispatch(setPagActualHabilidadAction(habilidadesHabilidad.paga + 1));
-                  }}
-                  dispatchPrev={() => {
-                     dispatch(setPagActualHabilidadAction(habilidadesHabilidad.paga - 1));
-                  }}
-                  dispatchSelect={(nom) => {
-                     dispatch(setPagActualHabilidadAction(nom));
-                  }}
-               />
-            </Col>
          </Row>
          <Row xs='auto' className='text-center justify-content-center g-3'>
             {loadingHabilidad ? <Loading /> : habilidadesHabilidad.listpags.items.map((r) => <CardHabilidad key={r.id} nombre={r.nombre} link={r.link} imagen={r.imagen} id={r.id} nivel={r.nivel} descripcion={r.descripcion} />)}

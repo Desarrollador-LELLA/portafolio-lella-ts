@@ -2,22 +2,26 @@ import { IHabilidadesProps, IListasPaginas, IPotafolioProps, IRedProps } from '.
 import { IUsuario } from './IUsuario';
 
 export interface IRetornoBack {
-    mensaje: string;
-    confirma: boolean;
+   mensaje: string;
+   confirma: boolean;
 }
 
 export interface IRetornoBackRedes extends IRetornoBack {
-    resultado: Array<IRedProps>;
+   resultado: Array<IRedProps>;
 }
 
 export interface IRetornoBackHabilidades extends IRetornoBack {
-    resultado: IListasPaginas<IHabilidadesProps>;
- }
+   resultado: IListasPaginas<IHabilidadesProps>;
+}
 
- export interface IRetornoBackProyectos extends IRetornoBack {
-    resultado: IListasPaginas<IPotafolioProps>;
- }
+export interface IRetornoBackProyecto extends IRetornoBack {
+   resultado: IPotafolioProps;
+}
+
+export interface IRetornoBackProyectos extends IRetornoBack {
+   resultado: IListasPaginas<IPotafolioProps>;
+}
 
 export interface IRetornoBackAuth extends IRetornoBack {
-    resultado: IUsuario;
+   resultado: IUsuario;
 }

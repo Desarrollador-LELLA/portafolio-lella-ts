@@ -6,31 +6,31 @@ export interface IRedProps {
 }
 
 export interface IHabilidadesProps {
-   id: number;
+   id?: number;
    nombre: string;
    imagen: string;
    link: string;
-   nivel: number;
-   descripcion: string;
+   nivel?: number | any;
+   descripcion?: string;
 }
 
 export interface IEstadoProps {
-   id: number;
+   id?: number;
    nombre: string;
    color: string;
 }
 
 export interface IImagenProps {
-   id: number;
+   id?: string | any;
    nombre: string;
    link: string;
 }
 
 export interface IPotafolioProps {
-   id: number;
+   id: string;
    Estado: IEstadoProps;
-   habilidades?: Array<IHabilidadesProps>;
-   imagenes?: Array<IImagenProps>;
+   Habilidades?: Array<IHabilidadesProps>;
+   Imagenes?: Array<IImagenProps>;
    imagen: string;
    titulo: string;
    descripcionCorta: string;

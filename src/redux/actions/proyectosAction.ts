@@ -1,6 +1,6 @@
 import { ThunkAction } from 'redux-thunk';
 import { IListasPaginas, IMetodosProps, IPotafolioProps } from '../../interfaces/IBaseDatos';
-import { IRetornoBackProyectos } from '../../interfaces/IRetornos';
+import { IRetornoBackProyecto, IRetornoBackProyectos } from '../../interfaces/IRetornos';
 import { consultaStandar } from '../../utilidades/metodosFirebase';
 import { RootState } from '../store';
 import { ProyectoActions } from '../../interfaces/IProyecto';
@@ -9,6 +9,10 @@ import { PROYECTOS_TYPE } from '../../types/proyectosType';
 interface IListLimit<A> extends IMetodosProps<A> {
    numpag: number;
    registros: number;
+}
+
+interface IProyectoIdAction<A> extends IMetodosProps<A> {
+   id: number | string | any;
 }
 
 export const getListProyectos = async (f: IListLimit<IRetornoBackProyectos>) => {
@@ -24,6 +28,22 @@ export const getListProyectos = async (f: IListLimit<IRetornoBackProyectos>) => 
    } catch (err: any) {
       f.onError(err.message);
       f.onLoading(false);
+   }
+};
+
+export const buscaxIdProyecto = async (buscaxId: IProyectoIdAction<IRetornoBackProyecto>) => {
+   try {
+      buscaxId.onLoading(true);
+      const retornoId = await consultaStandar<IRetornoBackProyecto>({ url: `/proyectos/buscaxid/${buscaxId.id}`, method: 'GET' });
+      if (retornoId.confirma) {
+         buscaxId.onSuccess(retornoId);
+      } else {
+         buscaxId.onError(retornoId.mensaje);
+      }
+      buscaxId.onLoading(false);
+   } catch (err: any) {
+      buscaxId.onError(err.message);
+      buscaxId.onLoading(false);
    }
 };
 

@@ -1,5 +1,5 @@
 export type IUsuario = {
-    nombre: string;
-    apellido: string;
-    imagen: string;
+   nombre: string;
+   apellido: string;
+   imagen: string;
 };

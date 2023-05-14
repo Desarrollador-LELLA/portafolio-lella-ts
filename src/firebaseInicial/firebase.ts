@@ -1,6 +1,6 @@
 import fireConfig from './config';
 import { initializeApp } from 'firebase/app';
-import * as allAna from "firebase/analytics";
+import * as allAna from 'firebase/analytics';
 import * as allAuth from 'firebase/auth';
 
 const app = initializeApp(fireConfig);
