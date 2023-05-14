@@ -7,7 +7,7 @@ import { RootState } from '../../../redux/store';
 import { ThunkDispatch } from 'redux-thunk';
 import { HabilidadActions } from '../../../interfaces/IHabilidad';
 import Loading from '../../comp/loading/Loading';
-import { getListHabilidades, setErrorHabilidadAction, setListaHabilidadAction, setLoadingHabilidadAction } from '../../../redux/actions/habilidadesAction';
+import { getListHabilidades, setErrorHabilidadAction, setListaHabilidadAction, setLoadingHabilidadAction, setPagActualHabilidadAction } from '../../../redux/actions/habilidadesAction';
 import Paginado from '../../comp/paginado/Paginado';
 
 interface ISobreMiProps {}
@@ -39,7 +39,7 @@ const SobreMi: FC<ISobreMiProps> = () => {
 
    return (
       <>
-            {console.log(habilidadesHabilidad)}
+         {console.log(habilidadesHabilidad)}
          <Row className='px-3'>
             <Col>
                <h1 className={`${s.text_sobremi}`}>Sobre Mi</h1>
@@ -54,7 +54,19 @@ const SobreMi: FC<ISobreMiProps> = () => {
          </Row>
          <Row>
             <Col>
-               <Paginado />
+               <Paginado
+                  pags={habilidadesHabilidad.listpags.pags}
+                  paga={habilidadesHabilidad.paga}
+                  dispatchNext={() => {
+                     dispatch(setPagActualHabilidadAction(habilidadesHabilidad.paga + 1));
+                  }}
+                  dispatchPrev={() => {
+                     dispatch(setPagActualHabilidadAction(habilidadesHabilidad.paga - 1));
+                  }}
+                  dispatchSelect={(nom) => {
+                     dispatch(setPagActualHabilidadAction(nom));
+                  }}
+               />
             </Col>
          </Row>
          <Row xs='auto' className='text-center justify-content-center g-3'>
@@ -62,7 +74,19 @@ const SobreMi: FC<ISobreMiProps> = () => {
          </Row>
          <Row className='pt-3'>
             <Col>
-               <Paginado />
+               <Paginado
+                  pags={habilidadesHabilidad.listpags.pags}
+                  paga={habilidadesHabilidad.paga}
+                  dispatchNext={() => {
+                     dispatch(setPagActualHabilidadAction(habilidadesHabilidad.paga + 1));
+                  }}
+                  dispatchPrev={() => {
+                     dispatch(setPagActualHabilidadAction(habilidadesHabilidad.paga - 1));
+                  }}
+                  dispatchSelect={(nom) => {
+                     dispatch(setPagActualHabilidadAction(nom));
+                  }}
+               />
             </Col>
          </Row>
       </>

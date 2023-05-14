@@ -1,30 +1,31 @@
 import { BaseSyntheticEvent, FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
 import { Pagination } from 'react-bootstrap';
-import { setPagActualHabilidadAction } from '../../../redux/actions/habilidadesAction';
 import { paginacion } from '../../../utilidades/customHook';
-import { ThunkDispatch } from 'redux-thunk';
-import { HabilidadActions } from '../../../interfaces/IHabilidad';
 
-const Paginado: FC = () => {
-   const { listpags, paga } = useSelector((state: RootState) => state.habilidad.habilidadesHabilidad);
-   const dispatch = useDispatch<ThunkDispatch<RootState, null, HabilidadActions>>();
-   const { p1, p3, p4, p5, p7, v2, v3, v4, v5, v6, v7 } = paginacion(listpags.pags, paga);
+interface IPaginadoProps {
+   pags: number;
+   paga: number;
+   dispatchNext: () => void;
+   dispatchPrev: () => void;
+   dispatchSelect: (nom: number) => void;
+}
+
+const Paginado: FC<IPaginadoProps> = ({ pags, paga, dispatchNext, dispatchPrev, dispatchSelect}) => {
+   const { p1, p3, p4, p5, p7, v2, v3, v4, v5, v6, v7 } = paginacion(pags, paga);
 
    const nextPagina = () => {
-      if (paga + 1 > listpags.pags) return;
-      dispatch(setPagActualHabilidadAction(paga + 1));
+      if (paga + 1 > pags) return;
+      dispatchNext()
    };
 
    const prevPagina = () => {
       if (paga - 1 < 1) return;
-      dispatch(setPagActualHabilidadAction(paga - 1));
+      dispatchPrev();
    };
 
    const selecPagina = (e: BaseSyntheticEvent) => {
       const nom = e.target.innerText;
-      dispatch(setPagActualHabilidadAction(parseInt(nom)));
+      dispatchSelect(parseInt(nom))
    };
 
    return (

@@ -5,17 +5,9 @@ import IcDetalle from '../../imagenes/IcDetalle';
 import IcGitHub from '../../imagenes/IcGitHub';
 import IcMundo from '../../imagenes/IcMundo';
 import { Link } from 'react-router-dom';
+import { IPotafolioProps } from '../../../interfaces/IBaseDatos';
 
-interface ICardPotafolioProps {
-   imagen: string;
-   titulo: string;
-   descripcion: string;
-   linkgithub?: string;
-   linkweb?: string;
-   habilitada: boolean;
-}
-
-const CardPotafolio: FC<ICardPotafolioProps> = ({ imagen, titulo, descripcion, linkgithub, linkweb, habilitada }) => {
+const CardPotafolio: FC<IPotafolioProps> = ({ imagen, titulo, descripcion, linkGithub, linkWeb, habilitada }) => {
    const onClickDetalle = () => {};
 
    const renderTooltipGitHub = (props: JSX.IntrinsicAttributes & TooltipProps & RefAttributes<HTMLDivElement>) => (
