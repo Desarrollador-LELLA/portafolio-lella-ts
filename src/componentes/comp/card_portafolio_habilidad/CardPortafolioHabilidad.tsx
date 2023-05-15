@@ -15,7 +15,7 @@ const CardPortafolioHabilidad: FC<IHabilidadesProps> = ({ nombre, imagen, nivel 
          <Card bsPrefix={s.card_cardportafoliohabilidad} className={`h-100`} bg={`black`}>
             <Row xs={12}>
                <Col className='mt-2 mb-2 ms-3 p-0' xs={2}>
-                  <Card.Img src={imagens} />
+                  <Card.Img src={imagen} alt={nombre} />
                </Col>
                <Col>
                   <Card.Body className='p-1'>

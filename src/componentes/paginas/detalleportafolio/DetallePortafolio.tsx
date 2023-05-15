@@ -70,7 +70,6 @@ const DetallePortafolio: FC<IDetallePortafolioProps> = () => {
 
    return (
       <>
-         {console.log(proyecto)}
          {loadingProyecto ? (
             <Loading />
          ) : (
@@ -85,18 +84,32 @@ const DetallePortafolio: FC<IDetallePortafolioProps> = () => {
                      <h1 className={`${s.text_detalleportafolio}`}>{proyecto.titulo}</h1>
                   </Col>
                </Row>
-               <Row xs='12' className={`${s.txt_modalventana} px-3`}>
+               <Row className={`${s.txt_modalventana} px-3`}>
                   <Col xs='12' md='7'>
-                     <Carousel>
-                        {proyecto.Imagenes?.map((i) => (
-                           <Carousel.Item>
-                              <Image className='d-block w-100' src={i.link} alt={i.nombre} />
-                              <Carousel.Caption>
-                                 <h3>{i.nombre}</h3>
-                              </Carousel.Caption>
-                           </Carousel.Item>
-                        ))}
-                     </Carousel>
+                     <Row className='pb-3'>
+                        <Col>
+                           <Carousel>
+                              {proyecto.Imagenes?.map((i) => (
+                                 <Carousel.Item>
+                                    <Image className='d-block w-100' src={i.link} alt={i.nombre} />
+                                    <Carousel.Caption>
+                                       <h3>{i.nombre}</h3>
+                                    </Carousel.Caption>
+                                 </Carousel.Item>
+                              ))}
+                           </Carousel>
+                        </Col>
+                     </Row>
+                     <Row className='d-none d-md-flex'>
+                        <Col className='order-1 order-md-0'>
+                           <h5 className={`${s.text_detalleportafolio}`}>Tecnologias Utilizadas</h5>
+                           <Row className='justify-content-center g-2'>
+                              {proyecto.Habilidades?.map((h) => (
+                                 <CardPortafolioHabilidad nombre={h.nombre} imagen={h.imagen} nivel={h.nivel} />
+                              ))}
+                           </Row>
+                        </Col>
+                     </Row>
                   </Col>
                   <Col xs='12' md='5' className={`${s.descripcion_detalleportafolio}`}>
                      <Row>
@@ -134,7 +147,7 @@ const DetallePortafolio: FC<IDetallePortafolioProps> = () => {
                            <p>{proyecto.descripcion}</p>
                         </Col>
                      </Row>
-                     <Row>
+                     <Row className='d-flex d-md-none'>
                         <Col>
                            <h5 className={`${s.text_detalleportafolio}`}>Tecnologias Utilizadas</h5>
                            <Row className='justify-content-center g-2'>

@@ -39,7 +39,6 @@ const SobreMi: FC<ISobreMiProps> = () => {
 
    return (
       <>
-         {console.log(habilidadesHabilidad)}
          <Row className='px-3'>
             <Col>
                <h1 className={`${s.text_sobremi}`}>Sobre Mi</h1>

@@ -10,3 +10,22 @@
 .txt_modalventana {
     color: rgb(124, 198, 118);
 }
+
+.habilidades_detalleportafolio {
+    display: block;
+}
+
+.habilidades_f_detalleportafolio {
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+
+    .habilidades_detalleportafolio {
+        display: none;
+    }
+
+    .habilidades_f_detalleportafolio {
+        display: block;
+    }
+}
