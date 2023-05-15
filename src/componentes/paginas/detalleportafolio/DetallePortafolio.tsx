@@ -144,7 +144,9 @@ const DetallePortafolio: FC<IDetallePortafolioProps> = () => {
                      <Row>
                         <Col>
                            <h5 className={`${s.text_detalleportafolio}`}>Descripcion</h5>
-                           <p>{proyecto.descripcion}</p>
+                           {proyecto.descripcion?.split('\\n').map((d, _idx) => (
+                              <p key={_idx}>{d}</p>
+                           ))}
                         </Col>
                      </Row>
                      <Row className='d-flex d-md-none'>

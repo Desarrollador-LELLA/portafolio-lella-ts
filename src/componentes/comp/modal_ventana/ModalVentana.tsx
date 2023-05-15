@@ -32,7 +32,12 @@ const ModalVentana: FC<IModalsHabilidades> = ({ show, handleClose, hablidad }) =
             </Row>
             <Row>
                <Col>
-                  <p className={`${s.modaldescripcion_modalventana}`}>{descripcion}</p>
+                  {/* <p className={`${s.modaldescripcion_modalventana}`}>{descripcion}</p> */}
+                  {descripcion?.split('\\n').map((d, _idx) => (
+                     <p key={_idx} className={`${s.modaldescripcion_modalventana}`}>
+                        {d}
+                     </p>
+                  ))}
                </Col>
             </Row>
          </Modal.Body>
