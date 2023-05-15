@@ -20,7 +20,7 @@ const Portafolio: FC<IPortafolioProps> = () => {
       const onUseEffect = () => {
          getListProyectos({
             numpag: proyectosProyecto.paga,
-            registros: 1,
+            registros: 10,
             onLoading: (v) => {
                dispatch(setLoadingProyectoAction(v));
             },
