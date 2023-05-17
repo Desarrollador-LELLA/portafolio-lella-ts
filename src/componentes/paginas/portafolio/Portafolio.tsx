@@ -18,20 +18,22 @@ const Portafolio: FC<IPortafolioProps> = () => {
 
    useEffect(() => {
       const onUseEffect = () => {
-         getListProyectos({
-            numpag: proyectosProyecto.paga,
-            registros: 10,
-            onLoading: (v) => {
-               dispatch(setLoadingProyectoAction(v));
-            },
-            onError: (msg) => {
-               console.log(msg);
-               dispatch(setErrorProyectoAction(msg));
-            },
-            onSuccess: (msg) => {
-               dispatch(setListaProyectoAction(msg.resultado));
-            },
-         });
+         if (proyectosProyecto.listpags.items.length === 0) {
+            getListProyectos({
+               numpag: proyectosProyecto.paga,
+               registros: 10,
+               onLoading: (v) => {
+                  dispatch(setLoadingProyectoAction(v));
+               },
+               onError: (msg) => {
+                  console.log(msg);
+                  dispatch(setErrorProyectoAction(msg));
+               },
+               onSuccess: (msg) => {
+                  dispatch(setListaProyectoAction(msg.resultado));
+               },
+            });
+         }
       };
 
       onUseEffect();
