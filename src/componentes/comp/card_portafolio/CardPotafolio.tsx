@@ -29,6 +29,7 @@ const CardPotafolio: FC<IPotafolioProps> = ({ id, Estado, imagen, titulo, descri
 
    return (
       <>
+      {console.log(linkGitHub, ' - ', linkWeb)}
          <Col xs='auto'>
             <Card bsPrefix={s.cardportafolio_portafolio} className={`h-100`} bg={`black`}>
                <Card.Body>
